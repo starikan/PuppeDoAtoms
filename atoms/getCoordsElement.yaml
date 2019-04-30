@@ -1,0 +1,7 @@
+---
+name: getCoordsElement
+type: atom
+needEnv: ['cloud', 'electron']
+needSelectors: ['selector']
+allowResults: ['x', 'y', 'width', 'height']
+runTest: atoms/getCoordsElement.js

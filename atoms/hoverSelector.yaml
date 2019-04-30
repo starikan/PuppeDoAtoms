@@ -1,0 +1,5 @@
+name: hoverSelector
+type: atom
+needEnv: ['cloud', 'electron']
+needSelectors: ['selector']
+runTest: atoms/hoverSelector.js

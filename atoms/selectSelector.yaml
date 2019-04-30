@@ -1,0 +1,7 @@
+name: selectSelector
+type: atom
+needEnv: ['cloud', 'electron']
+needSelectors: ['selector']
+needData: ['option']
+runTest: atoms/selectSelector.js
+cssOnly: true

@@ -1,0 +1,4 @@
+name: mouseDown
+type: atom
+needEnv: ['cloud', 'electron']
+runTest: atoms/mouseDown.js

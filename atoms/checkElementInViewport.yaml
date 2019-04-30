@@ -1,0 +1,27 @@
+---
+name: checkElementInViewport
+type: atom
+allowResults: ['нетуЕго']
+needSelectors: ['parent', 'target']
+runTest:
+- getCoordsElement:
+    bs: { selector: parent }
+    r:
+        x: xBody
+        y: yBody
+        height: heightBody
+        width: widthBody
+- logTest:
+    d: { logData: true }
+- getCoordsElement:
+    bs: { selector: target }
+    r:
+        x: xElement
+        y: yElement
+        height: heightElement
+        width: widthElement
+- logTest:
+    d: { logData: true }
+- blank:
+    dF:
+      elementNotInViewport: 'xBody + heightBody <= xElement || yBody + widthBody <= yElement'

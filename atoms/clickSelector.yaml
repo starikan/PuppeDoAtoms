@@ -1,0 +1,5 @@
+name: clickSelector
+type: atom
+needEnv: ['cloud', 'electron']
+needSelectors: ['selector']
+runTest: atoms/clickSelector.js

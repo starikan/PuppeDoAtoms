@@ -1,0 +1,6 @@
+name: waitForSelector
+type: atom
+envNames: ['cloud', 'electron']
+needSelectors: ['selector']
+allowOptions: ['hidden', 'visible']
+runTest: atoms/waitForSelector.js

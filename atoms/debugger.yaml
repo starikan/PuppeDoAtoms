@@ -1,0 +1,4 @@
+name: debugger
+type: atom
+needEnv: ['cloud', 'electron']
+runTest: atoms/debugger.js

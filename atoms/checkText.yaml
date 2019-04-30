@@ -1,0 +1,8 @@
+---
+name: checkText
+type: atom
+needEnv: ['cloud', 'electron']
+needData: ['text']
+needSelectors: ['selector']
+allowResults: ['exists']
+runTest: atoms/checkText.js

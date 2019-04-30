@@ -1,0 +1,5 @@
+name: mouseMove
+type: atom
+needEnv: ['cloud', 'electron']
+needData: ['X?', 'Y?', 'dX?', 'dY?']
+runTest: atoms/mouseMove.js

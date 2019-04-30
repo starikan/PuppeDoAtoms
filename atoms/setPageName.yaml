@@ -1,0 +1,5 @@
+name: setPageName
+type: atom
+needEnv: ['cloud']
+needData: ['position', 'name']
+runTest: atoms/setPageName.js

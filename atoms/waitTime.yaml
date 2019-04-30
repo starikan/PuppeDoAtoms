@@ -1,0 +1,5 @@
+name: waitTime
+type: atom
+envNames: ['cloud']
+needData: ['time']
+runTest: atoms/waitTime.js

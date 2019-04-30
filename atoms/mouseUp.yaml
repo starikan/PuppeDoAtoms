@@ -1,0 +1,4 @@
+name: mouseUp
+type: atom
+needEnv: ['cloud', 'electron']
+runTest: atoms/mouseUp.js

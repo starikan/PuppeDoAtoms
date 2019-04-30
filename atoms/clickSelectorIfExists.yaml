@@ -1,0 +1,14 @@
+---
+name: clickSelectorIfExists
+type: atom
+needSelectors: ['selector']
+needEnv: ['cloud', 'electron']
+runTest:
+  - blank:
+      result: { selector: clickSelectorIfExists_Selector }
+  - checkSelector:
+      bindSelectors: { selector: clickSelectorIfExists_Selector }
+      bindResults: { exists: clickSelectorIfExists_Result }
+  - clickSelector:
+      bindSelectors: { selector: clickSelectorIfExists_Selector }
+      if: "clickSelectorIfExists_Result == true"

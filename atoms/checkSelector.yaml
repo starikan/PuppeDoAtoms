@@ -1,0 +1,8 @@
+---
+name: checkSelector
+type: atom
+needEnv: ['cloud', 'electron']
+needSelectors: ['selector']
+allowResults: ['exists']
+beforeTest: atoms/checkSelector.js
+runTest: atoms/checkSelector.js
