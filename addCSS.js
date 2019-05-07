@@ -5,7 +5,7 @@ module.exports = {
     const css = _.get(data, 'css');
 
     await page.addStyleTag({ content: css });
-    log({
+    await log({
       text: `Добавлен CSS на страницу ${css}`,
       screenshot: false,
       level: 'raw',

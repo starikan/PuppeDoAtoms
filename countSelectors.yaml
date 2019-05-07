@@ -1,0 +1,8 @@
+---
+name: countSelectors
+type: atom
+needEnv: ['cloud', 'electron']
+needSelectors: ['selector']
+allowResults: ['count']
+beforeTest: atoms/countSelectors.js
+runTest: atoms/countSelectors.js
