@@ -1,0 +1,6 @@
+---
+name: addCSS
+type: atom
+needEnv: ['cloud', 'electron']
+needData: ['css']
+runTest: atoms/addCSS.js
