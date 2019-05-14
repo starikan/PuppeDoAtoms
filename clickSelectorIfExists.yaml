@@ -5,10 +5,10 @@ needSelectors: ['selector']
 needEnv: ['cloud', 'electron']
 runTest:
   - blank:
-      result: { selector: clickSelectorIfExists_Selector }
+      result: { clickSelectorIfExists_Selector: selector }
   - checkSelector:
       bindSelectors: { selector: clickSelectorIfExists_Selector }
-      bindResults: { exists: clickSelectorIfExists_Result }
+      result: { clickSelectorIfExists_Result: exists }
   - clickSelector:
       bindSelectors: { selector: clickSelectorIfExists_Selector }
       if: "clickSelectorIfExists_Result == true"

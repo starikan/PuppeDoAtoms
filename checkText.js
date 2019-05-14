@@ -26,5 +26,9 @@ module.exports = {
         level: 'raw'
       });
     }
+
+    return {
+      exists: elementText == text,
+    }
   }
 };
