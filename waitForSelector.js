@@ -1,24 +1,23 @@
 module.exports = {
-  runTest: async function (args) {
-    const { page, selectors, options, log, helper, _ } = args;
+  runTest: async function(args) {
+    const { page, selectors, options, log, helper, levelIndent, _ } = args;
     let selector = helper.anyGet(selectors, 'selector');
 
     let hide = helper.anyGet(options, 'hidden');
     let visible = helper.anyGet(options, 'visible');
 
-    if (selector.startsWith('xpath:')){
+    if (selector.startsWith('xpath:')) {
       selector = _.trimStart(selector, 'xpath:');
-      await page.waitForXPath( selector, {
+      await page.waitForXPath(selector, {
         visible: visible,
-        hidden: hide
-      } );
-    }
-    else {
+        hidden: hide,
+      });
+    } else {
       selector = _.trimStart(selector, 'css:');
-      await page.waitForSelector( selector, {
+      await page.waitForSelector(selector, {
         visible: visible,
-        hidden: hide
-      } );
+        hidden: hide,
+      });
     }
 
     await log({
@@ -26,6 +25,7 @@ module.exports = {
       screenshot: false,
       fullpage: false,
       level: 'debug',
+      levelIndent,
     });
-  }
+  },
 };

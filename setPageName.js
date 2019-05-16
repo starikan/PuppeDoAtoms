@@ -1,6 +1,6 @@
 module.exports = {
-  runTest: async function (args) {
-    const { env, data, browser, log, options, helper, _ } = args;
+  runTest: async function(args) {
+    const { env, data, browser, log, options, helper, levelIndent, _ } = args;
     let option = helper.anyGet(data, 'options');
     const screenshot = _.get(options, 'screenshot', false);
 
@@ -8,18 +8,18 @@ module.exports = {
     const name = _.get(data, 'name');
 
     const allPages = await browser.pages();
-    if (['last', -1].includes(position)){
-      console.log(env.set(`state.pages.${name}`, allPages[allPages.length - 1]))
-    }
-    else if (_.isNumber(position)){
-      env.set(`state.pages.${name}`, allPages[position])
+    if (['last', -1].includes(position)) {
+      console.log(env.set(`state.pages.${name}`, allPages[allPages.length - 1]));
+    } else if (_.isNumber(position)) {
+      env.set(`state.pages.${name}`, allPages[position]);
     }
 
     await log({
-      text: `Переключились на страницу ${ name }`,
+      text: `Переключились на страницу ${name}`,
       screenshot: screenshot,
       fullpage: true,
-      level: 'raw'
+      level: 'raw',
+      levelIndent,
     });
-  }
+  },
 };

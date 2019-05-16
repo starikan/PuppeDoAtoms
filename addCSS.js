@@ -1,6 +1,6 @@
 module.exports = {
-  runTest: async function (args) {
-    const { page, data, log, _ } = args;
+  runTest: async function(args) {
+    const { page, data, log, levelIndent, _ } = args;
 
     const css = _.get(data, 'css');
 
@@ -9,6 +9,7 @@ module.exports = {
       text: `Добавлен CSS на страницу ${css}`,
       screenshot: false,
       level: 'raw',
+      levelIndent,
     });
-  }
+  },
 };

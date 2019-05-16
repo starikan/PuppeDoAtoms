@@ -1,6 +1,6 @@
 module.exports = {
-  runTest: async function (args) {
-    const { browser, data, log} = args;
+  runTest: async function(args) {
+    const { browser, data, log, levelIndent } = args;
     //TODO: 2018-08-14 S.Starodubov сделать нормальный скриншот страницы которая открывается
 
     const allPages = await browser.pages();
@@ -8,7 +8,7 @@ module.exports = {
     let isUrlExist = false;
 
     allPages.forEach(page => {
-      if (page.url().includes(url)){
+      if (page.url().includes(url)) {
         isUrlExist = true;
       }
     });
@@ -18,16 +18,16 @@ module.exports = {
       await log({
         text: `Страница найдена URL = ${url}`,
         screenshot: false,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
-    }
-
-    else {
+    } else {
       await log({
         text: `Страница НЕ найдена URL = ${url}`,
         screenshot: false,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
     }
-  }
+  },
 };
