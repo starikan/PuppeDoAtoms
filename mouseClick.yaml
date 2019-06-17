@@ -1,6 +1,5 @@
 name: mouseСдшсл
 type: atom
-needEnv: ['cloud', 'electron']
 needSelectors: ['selector']
 needData: ['X', 'Y']
 runTest: atoms/mouseСдшсл.js

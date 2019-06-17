@@ -1,7 +1,6 @@
 ---
 name: getAttribute
 type: atom
-needEnv: ['cloud', 'electron']
 needSelectors: ['selector']
 needData: ['attribute']
 allowResults: ['attributeValue']

@@ -1,5 +1,4 @@
 name: jumpOnPage
 type: atom
-needEnv: ['cloud']
 needData: ['name']
 runTest: atoms/jumpOnPage.js

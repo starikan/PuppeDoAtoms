@@ -1,6 +1,5 @@
 ---
 name: goto
 type: atom
-needEnvs: ['cloud']
 needData: ['url']
 runTest: atoms/goTo.js

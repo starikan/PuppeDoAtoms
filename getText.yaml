@@ -1,7 +1,6 @@
 ---
 name: getText
 type: atom
-needEnv: ['cloud', 'electron']
 needSelectors: ['selector']
 allowResults: ['text']
 runTest: atoms/getText.js

@@ -1,6 +1,5 @@
 name: typeInput
 type: atom
-needEnv: ['cloud', 'electron']
 needSelectors: ['input']
 needData: ['text']
 runTest: atoms/typeInput.js

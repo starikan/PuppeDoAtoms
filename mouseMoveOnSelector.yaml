@@ -1,6 +1,5 @@
 name: mouseMoveOnSelector
 type: atom
-needEnv: ['cloud', 'electron']
 needSelectors: ['selector']
 needData: ['dX', 'dY']
 runTest: atoms/mouseMoveOnSelector.js
