@@ -1,6 +1,6 @@
 module.exports = {
-  runTest: async function (args) {
-    const { page, data, log, options, helper, _ } = args;
+  runTest: async function(args) {
+    const { page, data, log, options, helper, levelIndent, _ } = args;
     let option = helper.anyGet(data, 'options');
     const screenshot = _.get(options, 'screenshot', false);
     let X = _.get(data, 'X');
@@ -12,32 +12,28 @@ module.exports = {
     const mouseX = mouse._x;
     const mouseY = mouse._y;
 
-    if (!_.isUndefined(dX) && !_.isUndefined(dY)){
+    if (!_.isUndefined(dX) && !_.isUndefined(dY)) {
       await mouse.move(mouseX + dX, mouseY + dY, { steps: 50 });
       await log({
         text: `Мышь перемещена на расстоние X = ${dX}, Y = ${dY}`,
         screenshot: screenshot,
         fullpage: false,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
-    }
-
-    else if (!_.isUndefined(X) && !_.isUndefined(Y)){
+    } else if (!_.isUndefined(X) && !_.isUndefined(Y)) {
       await mouse.move(X, Y);
       await log({
         text: `Мышь перемещена на позицию X = ${X}, Y = ${Y}`,
         screenshot: screenshot,
         fullpage: false,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
+    } else {
+      throw {
+        message: `Не передан нужный набор параметров. Должно быть сочетания X-Y или dX-dY`,
+      };
     }
-
-    else {
-      throw({
-        message: `Не передан нужный набор параметров. Должно быть сочетания X-Y или dX-dY`
-      })
-    }
-
-
-  }
+  },
 };

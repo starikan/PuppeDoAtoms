@@ -1,6 +1,6 @@
 module.exports = {
   runTest: async function (args) {
-    const { page, selectors, log, options, helper, _ } = args;
+    const { page, selectors, log, options, helper, _ , levelIndent} = args;
     let selector = helper.anyGet(selectors, 'selector');
     const screenshot = _.get(options, 'screenshot', true);
     const element = await helper.getElement(page, selector);
@@ -10,7 +10,8 @@ module.exports = {
       screenshot: screenshot,
       fullpage: false,
       element: element,
-      level: 'debug'
+      level: 'debug',
+      levelIndent,
     });
 
     await element.click(selector);

@@ -1,7 +1,22 @@
 module.exports = {
-  runTest: async function (args) {
+  runTest: async function(args) {
     const CircularJSON = require('circular-json');
-    const { envName, envPageName, env, browser, page, data, selectors, options, envsId, envs, log, helper, _ } = args;
+    const {
+      envName,
+      envPageName,
+      env,
+      browser,
+      page,
+      data,
+      selectors,
+      options,
+      envsId,
+      envs,
+      log,
+      helper,
+      levelIndent,
+      _,
+    } = args;
 
     let selector = _.get(data, 'selector');
     let text = _.get(data, 'text', '');
@@ -19,16 +34,16 @@ module.exports = {
     let debug = _.get(data, 'debug', false);
 
     let element = false;
-    if (selector){
+    if (selector) {
       element = await helper.getElement(page, selector);
-    };
+    }
 
-    if (logVars){
+    if (logVars) {
       let vars = {
         envName,
         envPageName,
         envsId,
-      }
+      };
       await log({
         text: `
 ============================ VARS
@@ -37,11 +52,12 @@ ${JSON.stringify(vars, null, '  ')}
         `,
         screenshot: false,
         fullpage: false,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
-    };
+    }
 
-    if (logData){
+    if (logData) {
       await log({
         text: `
 ============================ DATA
@@ -50,11 +66,12 @@ ${JSON.stringify(data, null, '  ')}
         `,
         screenshot: false,
         fullpage: false,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
-    };
+    }
 
-    if (logSelectors){
+    if (logSelectors) {
       await log({
         text: `
 ============================ SELECTOR
@@ -63,11 +80,12 @@ ${JSON.stringify(selectors, null, '  ')}
         `,
         screenshot: false,
         fullpage: false,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
-    };
+    }
 
-    if (logBrowser){
+    if (logBrowser) {
       await log({
         text: `
 ============================ BROWSER
@@ -76,11 +94,12 @@ ${CircularJSON.stringify(browser, null, '  ')}
         `,
         screenshot: false,
         fullpage: false,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
-    };
+    }
 
-    if (logPage){
+    if (logPage) {
       await log({
         text: `
 ============================ PAGE
@@ -89,11 +108,12 @@ ${CircularJSON.stringify(page, null, '  ')}
         `,
         screenshot: false,
         fullpage: false,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
-    };
+    }
 
-    if (logOptions){
+    if (logOptions) {
       await log({
         text: `
 ============================ OPTIONS
@@ -102,11 +122,12 @@ ${CircularJSON.stringify(options, null, '  ')}
         `,
         screenshot: false,
         fullpage: false,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
-    };
+    }
 
-    if (logEnv){
+    if (logEnv) {
       await log({
         text: `
 ============================ ENV
@@ -115,11 +136,12 @@ ${CircularJSON.stringify(env, null, '  ')}
         `,
         screenshot: false,
         fullpage: false,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
-    };
+    }
 
-    if (logEnvs){
+    if (logEnvs) {
       await log({
         text: `
 ============================ ENVS
@@ -128,20 +150,22 @@ ${CircularJSON.stringify(envs, null, '  ')}
         `,
         screenshot: false,
         fullpage: false,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
-    };
+    }
 
     if (debug) {
       if (process.env.PPD_DEBUG_MODE) debugger;
-    };
+    }
 
     await log({
       text: text,
       screenshot: screenshot,
       fullpage: fullpage,
       element: element,
-      level: level
+      level: level,
+      levelIndent,
     });
-  }
+  },
 };

@@ -1,7 +1,6 @@
 module.exports = {
-
-  runTest: async function (args) {
-    const { page, selectors, data, log, helper } = args;
+  runTest: async function(args) {
+    const { page, selectors, data, log, helper, levelIndent } = args;
 
     const text = data.text;
     const selector = selectors.selector;
@@ -14,21 +13,21 @@ module.exports = {
         text: `Текст '${text}' найден в элементе '${selector}'`,
         screenshot: true,
         element: element,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
-    }
-
-    else {
+    } else {
       await log({
         text: `Текст '${text}' НЕ найден в элементе '${selector}'`,
         screenshot: true,
         element: element,
-        level: 'raw'
+        level: 'raw',
+        levelIndent,
       });
     }
 
     return {
       exists: elementText == text,
-    }
-  }
+    };
+  },
 };

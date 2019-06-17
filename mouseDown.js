@@ -1,6 +1,6 @@
 module.exports = {
-  runTest: async function (args) {
-    const { page, data, log, options, helper, _ } = args;
+  runTest: async function(args) {
+    const { page, data, log, options, helper, levelIndent, _ } = args;
     let option = helper.anyGet(data, 'options');
     const screenshot = _.get(options, 'screenshot', false);
 
@@ -11,7 +11,8 @@ module.exports = {
       text: `Мышь опущена`,
       screenshot: screenshot,
       fullpage: false,
-      level: 'raw'
+      level: 'raw',
+      levelIndent,
     });
-  }
+  },
 };
