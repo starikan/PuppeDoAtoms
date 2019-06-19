@@ -1,5 +1,5 @@
-name: mouseСдшсл
+name: mouseClick
 type: atom
 needSelectors: ['selector']
 needData: ['X', 'Y']
-runTest: atoms/mouseСдшсл.js
+runTest: atoms/mouseClick.js
