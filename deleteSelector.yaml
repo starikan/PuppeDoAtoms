@@ -1,4 +1,4 @@
 name: deleteSelector
 type: atom
-runTest: atoms/deleteSelector.js
 needSelectors: ['selector']
+runTest: atoms/deleteSelector.js

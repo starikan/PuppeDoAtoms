@@ -2,6 +2,7 @@ module.exports = {
   runTest: async function(args) {
     const { page, log, options, _, levelIndent, data } = args;
     const screenshot = _.get(options, 'screenshot', false);
+    const count = _.get(options, 'count', 1);
 
     key = _.get(data, 'key', false);
     modificator = _.get(data, 'modificator', false);
@@ -17,7 +18,9 @@ module.exports = {
       await page.keyboard.down(modificator2);
     }
 
-    await page.keyboard.press(key);
+    for (let i = 0; i < count; i++) {
+      await page.keyboard.press(key);
+    }
 
     if (modificator) {
       await page.keyboard.up(modificator);
