@@ -15,7 +15,7 @@ module.exports = {
       text: `Включена фильтрация запросов по маскам: ${JSON.stringify(filters)}`,
       screenshot: false,
       level: 'raw',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
   },
 };

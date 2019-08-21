@@ -19,14 +19,14 @@ module.exports = {
         text: `Страница найдена URL = ${url}`,
         screenshot: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     } else {
       await log({
         text: `Страница НЕ найдена URL = ${url}`,
         screenshot: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     }
   },

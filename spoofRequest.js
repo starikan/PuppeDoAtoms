@@ -24,7 +24,7 @@ module.exports = {
       text: `Запрос ${urlregexp} заменен файлом ${filename}`,
       screenshot: false,
       level: 'raw',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
   },
 };

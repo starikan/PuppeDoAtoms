@@ -10,7 +10,7 @@ module.exports = {
       screenshot: screenshot,
       fullpage: false,
       level: 'debug',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
 
     return { width, height, deviceScaleFactor, isMobile, hasTouch, isLandscape };

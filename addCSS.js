@@ -9,7 +9,7 @@ module.exports = {
       text: `Добавлен CSS на страницу ${css}`,
       screenshot: false,
       level: 'raw',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
   },
 };

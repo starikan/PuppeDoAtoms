@@ -14,7 +14,7 @@ module.exports = {
         screenshot: true,
         element: element,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     } else {
       await log({
@@ -22,7 +22,7 @@ module.exports = {
         screenshot: true,
         element: element,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     }
 

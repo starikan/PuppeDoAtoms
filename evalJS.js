@@ -9,7 +9,7 @@ module.exports = {
       text: `Выполнение кода JS: ${js}`,
       screenshot: false,
       level: 'raw',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
 
     return { data: dataEval };

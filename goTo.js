@@ -7,7 +7,7 @@ module.exports = {
       level: 'info',
       screenshot: false,
       fullpage: false,
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
   },
 };

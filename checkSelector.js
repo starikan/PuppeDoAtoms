@@ -5,6 +5,7 @@ module.exports = {
       text: `Проверка наличия селектора = ${selectors.selector}`,
       screenshot: false,
       level: 'raw',
+      levelIndent: levelIndent + 1,
     });
   },
 
@@ -18,7 +19,7 @@ module.exports = {
         text: `Селектор найден = ${selector}`,
         screenshot: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
       return {
         exists: true,
@@ -28,7 +29,7 @@ module.exports = {
         text: `Селектор НЕ найден = ${selector}`,
         screenshot: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
       return {
         exists: false,

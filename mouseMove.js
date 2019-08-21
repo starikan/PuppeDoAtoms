@@ -19,7 +19,7 @@ module.exports = {
         screenshot: screenshot,
         fullpage: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     } else if (!_.isUndefined(X) && !_.isUndefined(Y)) {
       await mouse.move(X, Y);
@@ -28,7 +28,7 @@ module.exports = {
         screenshot: screenshot,
         fullpage: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     } else {
       throw {

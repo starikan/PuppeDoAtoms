@@ -19,7 +19,7 @@ module.exports = {
       screenshot: screenshot,
       fullpage: true,
       level: 'raw',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
   },
 };

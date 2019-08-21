@@ -17,7 +17,7 @@ module.exports = {
       fullpage: false,
       element: element,
       level: 'raw',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
   },
 };

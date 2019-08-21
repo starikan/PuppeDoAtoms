@@ -5,7 +5,7 @@ module.exports = {
       text: `Подсчет количества селекторов = ${selectors.selector}`,
       screenshot: false,
       level: 'raw',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
   },
 
@@ -18,7 +18,7 @@ module.exports = {
       text: `Селекторов ${selectors.selector} найдено = ${elements.length}`,
       screenshot: false,
       level: 'raw',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
 
     return {

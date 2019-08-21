@@ -25,7 +25,7 @@ module.exports = {
       screenshot: false,
       fullpage: false,
       level: 'debug',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
   },
 };
