@@ -1,5 +1,6 @@
 name: waitForSelector
 type: atom
 needSelectors: ['selector']
+needData: ['timeDellay?']
 allowOptions: ['hidden', 'visible']
 runTest: atoms/waitForSelector.js
