@@ -7,7 +7,7 @@ module.exports = {
     const element = await helper.getElement(page, selector);
 
     let text = await page.evaluate(element => {
-      return element.innerText;
+      return element.innerText || element.value;
     }, element);
 
     await log({
