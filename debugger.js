@@ -4,7 +4,7 @@ module.exports = {
     await log({
       text: 'DEBUG PAGE',
       screenshot: false,
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
     await page.evaluate(() => {
       debugger;

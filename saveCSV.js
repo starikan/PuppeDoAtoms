@@ -12,7 +12,7 @@ module.exports = {
     const path = require('path');
 
     if (!fs.existsSync(folder)) {
-      fs.mkdirSync(folder)
+      fs.mkdirSync(folder);
     }
     fs.writeFileSync(path.join(folder, filename), headers + '\n' + csvText);
 
@@ -20,7 +20,7 @@ module.exports = {
       text: `Записан CSV файл: ${filename}`,
       screenshot: false,
       level: 'raw',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
   },
 };

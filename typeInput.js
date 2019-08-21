@@ -19,7 +19,7 @@ module.exports = {
       fullpage: false,
       element: element,
       level: 'debug',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
   },
 };

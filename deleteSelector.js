@@ -19,7 +19,7 @@ module.exports = {
       text: `Селектор удален со страницы: ${JSON.stringify(_selectors)}`,
       screenshot: false,
       level: 'raw',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
   },
 };

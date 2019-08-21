@@ -11,7 +11,7 @@ module.exports = {
         text: `Добавлен JS на страницу ${jsFile}`,
         screenshot: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     } else if (js) {
       await page.addScriptTag({ content: js });
@@ -19,9 +19,8 @@ module.exports = {
         text: `Добавлен JS на страницу ${js}`,
         screenshot: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     }
-
   },
 };

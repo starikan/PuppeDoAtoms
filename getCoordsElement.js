@@ -17,7 +17,7 @@ module.exports = {
       screenshot: screenshot,
       fullpage: false,
       level: 'raw',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
 
     return {

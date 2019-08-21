@@ -53,7 +53,7 @@ ${JSON.stringify(vars, null, '  ')}
         screenshot: false,
         fullpage: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     }
 
@@ -67,7 +67,7 @@ ${JSON.stringify(data, null, '  ')}
         screenshot: false,
         fullpage: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     }
 
@@ -81,7 +81,7 @@ ${JSON.stringify(selectors, null, '  ')}
         screenshot: false,
         fullpage: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     }
 
@@ -95,7 +95,7 @@ ${CircularJSON.stringify(browser, null, '  ')}
         screenshot: false,
         fullpage: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     }
 
@@ -109,7 +109,7 @@ ${CircularJSON.stringify(page, null, '  ')}
         screenshot: false,
         fullpage: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     }
 
@@ -123,7 +123,7 @@ ${CircularJSON.stringify(options, null, '  ')}
         screenshot: false,
         fullpage: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     }
 
@@ -137,7 +137,7 @@ ${CircularJSON.stringify(env, null, '  ')}
         screenshot: false,
         fullpage: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     }
 
@@ -151,7 +151,7 @@ ${CircularJSON.stringify(envs, null, '  ')}
         screenshot: false,
         fullpage: false,
         level: 'raw',
-        levelIndent,
+        levelIndent: levelIndent + 1,
       });
     }
 
@@ -165,7 +165,7 @@ ${CircularJSON.stringify(envs, null, '  ')}
       fullpage: fullpage,
       element: element,
       level: level,
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
   },
 };

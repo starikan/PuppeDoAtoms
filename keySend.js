@@ -4,10 +4,10 @@ module.exports = {
     const screenshot = _.get(options, 'screenshot', false);
     const count = _.get(options, 'count', 1);
 
-    key = _.get(data, 'key', false);
-    modificator = _.get(data, 'modificator', false);
-    modificator1 = _.get(data, 'modificator1', false);
-    modificator2 = _.get(data, 'modificator2', false);
+    let key = _.get(data, 'key', false);
+    let modificator = _.get(data, 'modificator', false);
+    let modificator1 = _.get(data, 'modificator1', false);
+    let modificator2 = _.get(data, 'modificator2', false);
     if (modificator) {
       await page.keyboard.down(modificator);
     }
@@ -37,7 +37,7 @@ module.exports = {
       screenshot: screenshot,
       fullpage: false,
       level: 'debug',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
   },
 };

@@ -12,7 +12,7 @@ module.exports = {
       fullpage: false,
       element: element,
       level: 'debug',
-      levelIndent,
+      levelIndent: levelIndent + 1,
     });
 
     for (let i = 0; i < count; i++) {
