@@ -1,12 +1,12 @@
 module.exports = {
   runTest: async function(args) {
-    const { page, selectors, data, options, log, helper, levelIndent, _ } = args;
+    const { page, selectors, options, log, helper, levelIndent, _ } = args;
     let selector = helper.anyGet(selectors, 'selector');
-    let timeDellay = helper.anyGet(data, 'timeDellay');
 
     let hide = helper.anyGet(options, 'hidden');
     let visible = helper.anyGet(options, 'visible');
 
+    let timeDellay = helper.anyGet(options, 'timeDellay');
     if (timeDellay) {
       await page.waitFor(timeDellay);
     }
