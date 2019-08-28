@@ -2,10 +2,6 @@
   "name": "puppedoatoms",
   "version": "1.0.0",
   "description": "Atoms for PuppeDo",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/starikan/PuppeDoAtoms.git"
