@@ -1,0 +1,27 @@
+{
+  "name": "puppedoatoms",
+  "version": "1.0.0",
+  "description": "Atoms for PuppeDo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/starikan/PuppeDoAtoms.git"
+  },
+  "keywords": [
+    "puppeteer",
+    "puppedo",
+    "ppd",
+    "testing",
+    "tests",
+    "e2e"
+  ],
+  "author": "Starodubov Sergey <4analit@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/starikan/PuppeDoAtoms/issues"
+  },
+  "homepage": "https://github.com/starikan/PuppeDoAtoms#readme"
+}
