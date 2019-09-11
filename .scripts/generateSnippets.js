@@ -2,67 +2,81 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-const templateGen = (name, needData, needSelectors) => {
+const templateGen = data => {
+  const { name, needData, needSelectors, allowResults, allowOptions, help } = data;
   let counter = 1;
-  let text = '';
 
-  let snippet = {};
-
-  text += `"PPD atom ${name}": {
-    "scope": "yaml,plaintext",
-    "prefix": "ppd_${name}",
-    "body": [
-      "- ${name}:",
-      "    description: $${counter}",
-  `;
-  counter = counter + 1;
+  let snippet = {
+    scope: 'yaml,plaintext',
+    prefix: `ppd_${name}`,
+    description: help,
+    body: [`- ${name}:`, '    ' + `description: $${counter++}`],
+  };
 
   if (needData) {
     if (needData.length === 1) {
-      text = text + `"    bD: { ${needData}: $${counter}}",`;
+      snippet.body.push('    ' + `bD: { ${needData}: $${counter++} }`);
     } else {
-      text = text + `"    bD:",`;
+      snippet.body.push('    ' + `bD:`);
       for (let i = 0; i < needData.length; i++) {
-        text = text + `"    ${needData[i]}: ${counter}",`;
-        counter = counter + 1;
+        snippet.body.push('      ' + `${needData[i]}: $${counter++}`);
       }
     }
   }
 
   if (needSelectors) {
     if (needSelectors.length === 1) {
-      text = text + `"    bS: { ${needSelectors}: $${counter}}",`;
+      snippet.body.push('    ' + `bS: { ${needSelectors}: $${counter++} }`);
     } else {
-      text = text + `"    bS:",`;
+      snippet.body.push('    ' + `bS:`);
       for (let i = 0; i < needSelectors.length; i++) {
-        text = text + `"    ${needSelectors[i]}: ${counter}",`;
-        counter = counter + 1;
+        snippet.body.push('      ' + `${needSelectors[i]}: $${counter++}`);
       }
     }
   }
 
-  text += `],
-    "description": "Create PPD Atom ${name}"
-  },
-  `;
+  if (allowOptions) {
+    if (allowOptions.length === 1) {
+      snippet.body.push('    ' + `options: { ${allowOptions}: $${counter++} }`);
+    } else {
+      snippet.body.push('    ' + `options:`);
+      for (let i = 0; i < allowOptions.length; i++) {
+        snippet.body.push('      ' + `${allowOptions[i]}: $${counter++}`);
+      }
+    }
+  }
 
-  return text;
+  if (needData || needSelectors) {
+    snippet.body.push('    ' + `if: "true"`);
+    snippet.body.push('    ' + `errorIf: "false"`);
+  }
+
+  if (allowResults) {
+    if (allowResults.length === 1) {
+      snippet.body.push('    ' + `r: { $${counter++}: ${allowResults} }`);
+    } else {
+      snippet.body.push('"    ' + `r:"`);
+      for (let i = 0; i < allowResults.length; i++) {
+        snippet.body.push('      ' + `$${counter++}: ${allowResults[i]}`);
+      }
+    }
+    snippet.body.push('    ' + `rF: ""`);
+    snippet.body.push('    ' + `errorIfResult: "false"`);
+  }
+
+  return snippet;
 };
 
 function walk(dir) {
   const files = fs.readdirSync(dir);
   const yamls = files.filter(v => v.endsWith('.yaml'));
   const yamlsData = yamls.map(v => yaml.safeLoad(fs.readFileSync(v, 'utf8')));
-  const snippet = templateGen(yamlsData[0].name, yamlsData[0].needData, yamlsData[0].needSelectors);
-  debugger;
-  // files.map(async file => {
-  //   const filePath = path.join(dir, file);
-  //   const stats = await fs.stat(filePath);
-  //   if (stats.isDirectory()) return walk(filePath);
-  //   else if (stats.isFile()) return filePath;
-  // })
+  const snippets = yamlsData.reduce((result, v) => {
+    result[`PPD atom ${v.name}`] = templateGen(v);
+    return result;
+  }, {});
 
-  // return files.reduce((all, folderContents) => all.concat(folderContents), []);
+  fs.writeFileSync(path.join(process.cwd(), '.vscode', 'ppd.code-snippets'), JSON.stringify(snippets));
 }
 
 console.log(walk('.'));
