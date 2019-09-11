@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/starikan/PuppeDoAtoms/issues"
   },
-  "homepage": "https://github.com/starikan/PuppeDoAtoms#readme"
+  "homepage": "https://github.com/starikan/PuppeDoAtoms#readme",
+  "dependencies": {
+    "js-yaml": "^3.13.1"
+  }
 }
