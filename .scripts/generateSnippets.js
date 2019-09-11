@@ -16,25 +16,27 @@ const templateGen = data => {
   const genBlock = (data, counter, helpName, prefix, invert = false) => {
     if (data) {
       if (data.length === 1) {
-        let mainPart = `${data}: $${counter++}`;
+        let mainPart = `${data}: $${counter}`;
         if (invert) {
-          mainPart = `$${counter-1}: ${data}`;
+          mainPart = `$${counter}: ${data}`;
         }
         snippet.body.push(
           `    ${prefix}: { ${mainPart} }${
             help && help[helpName] && help[helpName][data] ? ' # ' + help[helpName][data] : ''
           }`,
         );
+        counter += 1;
       } else {
         snippet.body.push(`    ${prefix}:`);
         for (let i = 0; i < data.length; i++) {
-          let mainPart = `      ${data[i]}: $${counter++}`;
+          let mainPart = `      ${data[i]}: $${counter}`;
           if (invert) {
-            mainPart = `      $${counter-1}: ${data[i]}`;
+            mainPart = `      $${counter}: ${data[i]}`;
           }
           snippet.body.push(
             `${mainPart}${help && help[helpName] && help[helpName][data[i]] ? ' # ' + help[helpName][data[i]] : ''}`,
           );
+          counter += 1;
         }
       }
     }
