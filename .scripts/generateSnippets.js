@@ -3,63 +3,57 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 const templateGen = data => {
-  const { name, needData, needSelectors, allowResults, allowOptions, help } = data;
+  const { name, needData, needSelectors, allowResults, allowOptions, help, description } = data;
   let counter = 1;
 
   let snippet = {
     scope: 'yaml,plaintext',
     prefix: `ppd_${name}`,
-    description: help,
+    description: description,
     body: [`- ${name}:`, '    ' + `description: $${counter++}`],
   };
 
-  if (needData) {
-    if (needData.length === 1) {
-      snippet.body.push('    ' + `bD: { ${needData}: $${counter++} }`);
-    } else {
-      snippet.body.push('    ' + `bD:`);
-      for (let i = 0; i < needData.length; i++) {
-        snippet.body.push('      ' + `${needData[i]}: $${counter++}`);
+  const genBlock = (data, counter, helpName, prefix, invert = false) => {
+    if (data) {
+      if (data.length === 1) {
+        let mainPart = `${data}: $${counter++}`;
+        if (invert) {
+          mainPart = `$${counter-1}: ${data}`;
+        }
+        snippet.body.push(
+          `    ${prefix}: { ${mainPart} }${
+            help && help[helpName] && help[helpName][data] ? ' # ' + help[helpName][data] : ''
+          }`,
+        );
+      } else {
+        snippet.body.push(`    ${prefix}:`);
+        for (let i = 0; i < data.length; i++) {
+          let mainPart = `      ${data[i]}: $${counter++}`;
+          if (invert) {
+            mainPart = `      $${counter-1}: ${data[i]}`;
+          }
+          snippet.body.push(
+            `${mainPart}${help && help[helpName] && help[helpName][data[i]] ? ' # ' + help[helpName][data[i]] : ''}`,
+          );
+        }
       }
     }
-  }
 
-  if (needSelectors) {
-    if (needSelectors.length === 1) {
-      snippet.body.push('    ' + `bS: { ${needSelectors}: $${counter++} }`);
-    } else {
-      snippet.body.push('    ' + `bS:`);
-      for (let i = 0; i < needSelectors.length; i++) {
-        snippet.body.push('      ' + `${needSelectors[i]}: $${counter++}`);
-      }
-    }
-  }
+    return counter;
+  };
 
-  if (allowOptions) {
-    if (allowOptions.length === 1) {
-      snippet.body.push('    ' + `options: { ${allowOptions}: $${counter++} }`);
-    } else {
-      snippet.body.push('    ' + `options:`);
-      for (let i = 0; i < allowOptions.length; i++) {
-        snippet.body.push('      ' + `${allowOptions[i]}: $${counter++}`);
-      }
-    }
-  }
+  counter = genBlock(needData, counter, 'data', 'bD');
+  counter = genBlock(needSelectors, counter, 'selectors', 'bS');
+  counter = genBlock(allowOptions, counter, 'options', 'options');
 
   if (needData || needSelectors) {
     snippet.body.push('    ' + `if: "true"`);
     snippet.body.push('    ' + `errorIf: "false"`);
   }
 
+  genBlock(allowResults, counter, 'results', 'r', true);
+
   if (allowResults) {
-    if (allowResults.length === 1) {
-      snippet.body.push('    ' + `r: { $${counter++}: ${allowResults} }`);
-    } else {
-      snippet.body.push('"    ' + `r:"`);
-      for (let i = 0; i < allowResults.length; i++) {
-        snippet.body.push('      ' + `$${counter++}: ${allowResults[i]}`);
-      }
-    }
     snippet.body.push('    ' + `rF: ""`);
     snippet.body.push('    ' + `errorIfResult: "false"`);
   }
