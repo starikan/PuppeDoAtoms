@@ -13,46 +13,36 @@ const templateGen = data => {
     body: [`- ${name}:`, '    ' + `description: $${counter++}`],
   };
 
+  const genLine = (data, helpName, invert) => {
+    let helpData = help && help[helpName] && help[helpName][data];
+    let helpString = '';
+    let helpDefault;
+    if (typeof helpData === 'string') {
+      helpString = ' # ' + help[helpName][data];
+    }
+    if (typeof helpData === 'object') {
+      helpString = ' # ' + help[helpName][data].description;
+      helpDefault = help[helpName][data].default;
+    }
+
+    let mainPart = `${data}: ${helpDefault ? helpDefault : '$' + counter}`;
+    if (invert) {
+      mainPart = `$${counter}: ${data}`;
+    }
+    return { mainPart, helpString };
+  };
+
   const genBlock = (data, counter, helpName, prefix, invert = false) => {
     if (data) {
       if (data.length === 1) {
-        let helpData = help && help[helpName] && help[helpName][data];
-        let helpString = '';
-        let helpDefault;
-        if (typeof helpData === 'string') {
-          helpString = ' # ' + help[helpName][data];
-        }
-        if (typeof helpData === 'object') {
-          helpString = ' # ' + help[helpName][data].description;
-          helpDefault = help[helpName][data].default;
-        }
-
-        let mainPart = `${data}: ${helpDefault ? helpDefault : '$' + counter}`;
-        if (invert) {
-          mainPart = `$${counter}: ${data}`;
-        }
-
+        const { mainPart, helpString } = genLine(data, helpName, invert);
         snippet.body.push(`    ${prefix}: { ${mainPart} }${helpString}`);
         counter += 1;
       } else {
         snippet.body.push(`    ${prefix}:`);
         for (let i = 0; i < data.length; i++) {
-          let helpData = help && help[helpName] && help[helpName][data[i]];
-          let helpString = '';
-          let helpDefault;
-          if (typeof helpData === 'string') {
-            helpString = ' # ' + help[helpName][data[i]];
-          }
-          if (typeof helpData === 'object') {
-            helpString = ' # ' + help[helpName][data[i]].description;
-            helpDefault = help[helpName][data[i]].default;
-          }
-
-          let mainPart = `      ${data[i]}: ${helpDefault ? helpDefault : '$' + counter}`;
-          if (invert) {
-            mainPart = `      $${counter}: ${data[i]}`;
-          }
-          snippet.body.push(`${mainPart}${helpString}`);
+          const { mainPart, helpString } = genLine(data[i], helpName, invert);
+          snippet.body.push(`      ${mainPart}${helpString}`);
           counter += 1;
         }
       }
