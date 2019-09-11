@@ -1,4 +1,5 @@
 ---
+name: dragAndDrop
 needSelectors: ['dnd_selector']
 needData: ['dnd_offcetX', 'dnd_offcetY', 'dnd_dX', 'dnd_dY']
 runTest:
