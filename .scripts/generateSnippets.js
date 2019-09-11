@@ -16,26 +16,43 @@ const templateGen = data => {
   const genBlock = (data, counter, helpName, prefix, invert = false) => {
     if (data) {
       if (data.length === 1) {
-        let mainPart = `${data}: $${counter}`;
+        let helpData = help && help[helpName] && help[helpName][data];
+        let helpString = '';
+        let helpDefault;
+        if (typeof helpData === 'string') {
+          helpString = ' # ' + help[helpName][data];
+        }
+        if (typeof helpData === 'object') {
+          helpString = ' # ' + help[helpName][data].description;
+          helpDefault = help[helpName][data].default;
+        }
+
+        let mainPart = `${data}: ${helpDefault ? helpDefault : '$' + counter}`;
         if (invert) {
           mainPart = `$${counter}: ${data}`;
         }
-        snippet.body.push(
-          `    ${prefix}: { ${mainPart} }${
-            help && help[helpName] && help[helpName][data] ? ' # ' + help[helpName][data] : ''
-          }`,
-        );
+
+        snippet.body.push(`    ${prefix}: { ${mainPart} }${helpString}`);
         counter += 1;
       } else {
         snippet.body.push(`    ${prefix}:`);
         for (let i = 0; i < data.length; i++) {
-          let mainPart = `      ${data[i]}: $${counter}`;
+          let helpData = help && help[helpName] && help[helpName][data[i]];
+          let helpString = '';
+          let helpDefault;
+          if (typeof helpData === 'string') {
+            helpString = ' # ' + help[helpName][data[i]];
+          }
+          if (typeof helpData === 'object') {
+            helpString = ' # ' + help[helpName][data[i]].description;
+            helpDefault = help[helpName][data[i]].default;
+          }
+
+          let mainPart = `      ${data[i]}: ${helpDefault ? helpDefault : '$' + counter}`;
           if (invert) {
             mainPart = `      $${counter}: ${data[i]}`;
           }
-          snippet.body.push(
-            `${mainPart}${help && help[helpName] && help[helpName][data[i]] ? ' # ' + help[helpName][data[i]] : ''}`,
-          );
+          snippet.body.push(`${mainPart}${helpString}`);
           counter += 1;
         }
       }
