@@ -25,6 +25,11 @@ const templateGen = data => {
       helpDefault = help[helpName][data].default;
     }
 
+    if (data.match(/\?/)) {
+      data = data.replace(/\?/g, '');
+      helpString = helpString === '' ? ' # [optional]' : helpString + ' [optional]'
+    }
+
     let mainPart = `${data}: ${helpDefault ? helpDefault : '$' + counter}`;
     if (invert) {
       mainPart = `$${counter}: ${data}`;
@@ -35,7 +40,7 @@ const templateGen = data => {
   const genBlock = (data, counter, helpName, prefix, invert = false) => {
     if (data) {
       if (data.length === 1) {
-        const { mainPart, helpString } = genLine(data, helpName, invert);
+        const { mainPart, helpString } = genLine(data[0], helpName, invert);
         snippet.body.push(`    ${prefix}: { ${mainPart} }${helpString}`);
         counter += 1;
       } else {
@@ -47,7 +52,6 @@ const templateGen = data => {
         }
       }
     }
-
     return counter;
   };
 
