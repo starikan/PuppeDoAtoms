@@ -1,6 +1,6 @@
 module.exports = {
   runTest: async function(args) {
-    const { page, data, selectors, helper, levelIndent } = args;
+    const { page, data, selectors, helper } = args;
     const selector = selectors.input;
     const text = data.text;
     const element = await helper.getElement(page, selector);
@@ -8,14 +8,15 @@ module.exports = {
   },
 
   afterTest: async function(args) {
-    const { page, data, selectors, log, helper, levelIndent } = args;
+    const { page, data, selectors, options, log, helper, levelIndent } = args;
+    const screenshot = _.get(options, 'screenshot', false);
     const selector = selectors.input;
     const text = data.text;
     const element = await helper.getElement(page, selector);
 
     await log({
       text: `Ввод текста в INPUT = ${selector}, TEXT = ${text}`,
-      screenshot: true,
+      screenshot: screenshot,
       fullpage: false,
       element: element,
       level: 'debug',
