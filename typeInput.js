@@ -8,7 +8,7 @@ module.exports = {
   },
 
   afterTest: async function(args) {
-    const { page, data, selectors, options, log, helper, levelIndent } = args;
+    const { page, data, selectors, options, log, helper, levelIndent, _ } = args;
     const screenshot = _.get(options, 'screenshot', false);
     const selector = selectors.input;
     const text = data.text;
