@@ -1,22 +1,19 @@
 module.exports = {
-  runTest: async function (args) {
-    const { page, selectors, log, options, helper, _ , levelIndent} = args;
-    let selector = helper.anyGet(selectors, 'selector');
-    const screenshot = _.get(options, 'screenshot', false);
+  runTest: async function(args) {
+    const { page, selectors, log, options, helper, _, levelIndent } = args;
+    const selector = helper.anyGet(selectors, 'selector');
     const element = await helper.getElement(page, selector);
-    const count = _.get(options, 'count', 1);
+    const { screenshot = false, fullpage = false, count = 1, delay = 0, button = 'left' } = options;
 
     await log({
       text: `Нажат селектор = ${selector}`,
       screenshot: screenshot,
-      fullpage: false,
+      fullpage: fullpage,
       element: element,
       level: 'debug',
       levelIndent: levelIndent + 1,
     });
 
-    for (let i = 0; i < count; i++) {
-      await element.click(selector);
-    }
-  }
+    await element.click({ clickCount: count, delay, button });
+  },
 };
