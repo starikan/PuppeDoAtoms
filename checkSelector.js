@@ -11,7 +11,7 @@ module.exports = {
 
   runTest: async function(args) {
     const { page, selectors, log, helper, levelIndent } = args;
-    let selector = helper.anyGet(selectors, 'selector');
+    const selector = helper.anyGet(selectors, 'selector');
     const element = await helper.getElement(page, selector);
 
     if (element) {

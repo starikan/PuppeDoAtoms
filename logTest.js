@@ -39,7 +39,7 @@ module.exports = {
     }
 
     if (logVars) {
-      let vars = {
+      const vars = {
         envName,
         envPageName,
         envsId,

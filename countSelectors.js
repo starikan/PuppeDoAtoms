@@ -3,7 +3,7 @@ module.exports = {
     const { page, selectors, options, log, helper, levelIndent } = args;
     const selector = helper.anyGet(selectors, 'selector');
 
-    let timeDellay = helper.anyGet(options, 'timeDellay');
+    const timeDellay = helper.anyGet(options, 'timeDellay');
     if (timeDellay) {
       await page.waitFor(timeDellay);
     }
