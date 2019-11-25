@@ -1,7 +1,7 @@
 module.exports = {
   runTest: async function(args) {
     const { page, selectors, options, log, helper, levelIndent } = args;
-    let selector = helper.anyGet(selectors, 'selector');
+    const selector = helper.anyGet(selectors, 'selector');
 
     let timeDellay = helper.anyGet(options, 'timeDellay');
     if (timeDellay) {
@@ -15,7 +15,7 @@ module.exports = {
       levelIndent: levelIndent + 1,
     });
 
-    const elements = await helper.getElement(page, selector, (allElements = true));
+    const elements = await helper.getElement(page, selector, true);
 
     await log({
       text: `Селекторов ${selectors.selector} найдено = ${elements.length}`,

@@ -4,7 +4,7 @@ module.exports = {
 
     await page.waitForNavigation({ waitUntil: _.get(options, 'waitUntil', 'load') });
     await log({
-      text: `waitLoadPage`,
+      text: 'waitLoadPage',
       screenshot: false,
       fullpage: false,
       level: 'debug',

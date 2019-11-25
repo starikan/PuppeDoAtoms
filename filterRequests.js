@@ -8,7 +8,9 @@ module.exports = {
     page.on('request', async interceptedRequest => {
       if (filters.some(v => interceptedRequest.url().match(v))) {
         interceptedRequest.abort();
-      } else interceptedRequest.continue();
+      } else {
+        interceptedRequest.continue();
+      }
     });
 
     await log({

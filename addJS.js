@@ -2,7 +2,7 @@ module.exports = {
   runTest: async function(args) {
     const { page, data, log, levelIndent, _ } = args;
 
-    let js = _.get(data, 'js');
+    const js = _.get(data, 'js');
     const jsFile = _.get(data, 'jsFile');
 
     if (jsFile) {

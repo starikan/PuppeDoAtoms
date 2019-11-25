@@ -1,14 +1,13 @@
 module.exports = {
   runTest: async function(args) {
-    const { page, data, log, options, helper, levelIndent, _ } = args;
-    let option = helper.anyGet(data, 'options');
+    const { page, log, options, levelIndent, _ } = args;
     const screenshot = _.get(options, 'screenshot', false);
 
     const mouse = page.mouse;
     await mouse.down();
 
     await log({
-      text: `Мышь опущена`,
+      text: 'Кнопка мыши опущена',
       screenshot: screenshot,
       fullpage: false,
       level: 'raw',

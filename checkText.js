@@ -8,7 +8,7 @@ module.exports = {
     const element = await helper.getElement(page, selector);
     const elementText = element.innerText;
 
-    if (elementText == text) {
+    if (elementText === text) {
       await log({
         text: `Текст '${text}' найден в элементе '${selector}'`,
         screenshot: true,
@@ -27,7 +27,7 @@ module.exports = {
     }
 
     return {
-      exists: elementText == text,
+      exists: elementText === text,
     };
   },
 };

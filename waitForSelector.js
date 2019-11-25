@@ -3,10 +3,10 @@ module.exports = {
     const { page, selectors, options, log, helper, levelIndent, _ } = args;
     let selector = helper.anyGet(selectors, 'selector');
 
-    let hide = helper.anyGet(options, 'hidden');
-    let visible = helper.anyGet(options, 'visible');
+    const hide = helper.anyGet(options, 'hidden');
+    const visible = helper.anyGet(options, 'visible');
 
-    let timeDellay = helper.anyGet(options, 'timeDellay');
+    const timeDellay = helper.anyGet(options, 'timeDellay');
     if (timeDellay) {
       await page.waitFor(timeDellay);
     }

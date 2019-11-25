@@ -1,8 +1,7 @@
 module.exports = {
   runTest: async function(args) {
-    const { page, selectors, data, log, options, helper, levelIndent, _ } = args;
+    const { page, selectors, log, options, helper, levelIndent, _ } = args;
     const selector = helper.anyGet(selectors, 'selector');
-    const dataOptions = helper.anyGet(data, 'options');
     const screenshot = _.get(options, 'screenshot', false);
 
     const element = await helper.getElement(page, selector);

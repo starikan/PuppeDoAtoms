@@ -1,14 +1,13 @@
 module.exports = {
   runTest: async function(args) {
     const { page, selectors, data, log, options, helper, levelIndent, _ } = args;
-    let selector = helper.anyGet(selectors, 'selector');
-    let option = helper.anyGet(data, 'options');
+    const selector = helper.anyGet(selectors, 'selector');
     const screenshot = _.get(options, 'screenshot', false);
-    let dX = data.dX;
-    let dY = data.dY;
+    const dX = data.dX;
+    const dY = data.dY;
 
     const element = await helper.getElement(page, selector);
-    let boxElement = await element.boundingBox();
+    const boxElement = await element.boundingBox();
     const elementX = await boxElement.x;
     const elementY = await boxElement.y;
 

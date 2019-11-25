@@ -1,7 +1,6 @@
 module.exports = {
   runTest: async function(args) {
-    const { env, data, browser, log, options, helper, levelIndent, _ } = args;
-    let option = helper.anyGet(data, 'options');
+    const { env, data, browser, log, options, levelIndent, _ } = args;
     const screenshot = _.get(options, 'screenshot', false);
 
     const position = _.get(data, 'position');

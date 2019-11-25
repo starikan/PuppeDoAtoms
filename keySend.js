@@ -4,10 +4,10 @@ module.exports = {
     const screenshot = _.get(options, 'screenshot', false);
     const count = _.get(options, 'count', 1);
 
-    let key = _.get(data, 'key', false);
-    let modificator = _.get(data, 'modificator', false);
-    let modificator1 = _.get(data, 'modificator1', false);
-    let modificator2 = _.get(data, 'modificator2', false);
+    const key = _.get(data, 'key', false);
+    const modificator = _.get(data, 'modificator', false);
+    const modificator1 = _.get(data, 'modificator1', false);
+    const modificator2 = _.get(data, 'modificator2', false);
     if (modificator) {
       await page.keyboard.down(modificator);
     }
@@ -33,7 +33,9 @@ module.exports = {
     }
 
     await log({
-      text: `Нажаты клавиши = ${modificator ? modificator + '+' : ''}${modificator1 ? modificator1 + '+' : ''}${modificator2 ? modificator2 + '+' : ''}${key}`,
+      text: `Нажаты клавиши = ${modificator ? modificator + '+' : ''}${modificator1 ? modificator1 + '+' : ''}${
+        modificator2 ? modificator2 + '+' : ''
+      }${key}`,
       screenshot: screenshot,
       fullpage: false,
       level: 'debug',

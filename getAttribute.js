@@ -1,12 +1,12 @@
 module.exports = {
   runTest: async function(args) {
     const { page, selectors, data, log, options, helper, levelIndent, _ } = args;
-    let selector = helper.anyGet(selectors, 'selector');
-    let screenshot = _.get(options, 'screenshot', false);
-    let attr = helper.anyGet(data, 'attribute');
+    const selector = helper.anyGet(selectors, 'selector');
+    const screenshot = _.get(options, 'screenshot', false);
+    const attr = helper.anyGet(data, 'attribute');
     const element = await helper.getElement(page, selector);
 
-    let attrValue = await page.evaluate(
+    const attrValue = await page.evaluate(
       (element, attr) => {
         return element.getAttribute(attr);
       },

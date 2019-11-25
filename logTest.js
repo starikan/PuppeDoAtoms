@@ -18,22 +18,22 @@ module.exports = {
       _,
     } = args;
 
-    let selector = _.get(data, 'selector');
-    let text = _.get(data, 'text', '');
-    let screenshot = _.get(data, 'screenshot', false);
-    let fullpage = _.get(data, 'fullpage', false);
-    let level = _.get(data, 'level', 'raw');
-    let logVars = _.get(data, 'logVars', false);
-    let logData = _.get(data, 'logData', false);
-    let logSelectors = _.get(data, 'logSelectors', false);
-    let logBrowser = _.get(data, 'logBrowser', false);
-    let logPage = _.get(data, 'logPage', false);
-    let logOptions = _.get(data, 'logOptions', false);
-    let logEnv = _.get(data, 'logEnv', false);
-    let logEnvs = _.get(data, 'logEnvs', false);
-    let debug = _.get(data, 'debug', false);
+    const selector = _.get(data, 'selector');
+    const text = _.get(data, 'text', '');
+    const screenshot = _.get(data, 'screenshot', false);
+    const fullpage = _.get(data, 'fullpage', false);
+    const level = _.get(data, 'level', 'raw');
+    const logVars = _.get(data, 'logVars', false);
+    const logData = _.get(data, 'logData', false);
+    const logSelectors = _.get(data, 'logSelectors', false);
+    const logBrowser = _.get(data, 'logBrowser', false);
+    const logPage = _.get(data, 'logPage', false);
+    const logOptions = _.get(data, 'logOptions', false);
+    const logEnv = _.get(data, 'logEnv', false);
+    const logEnvs = _.get(data, 'logEnvs', false);
+    const debug = _.get(data, 'debug', false);
 
-    let element = false;
+    const element = false;
     if (selector) {
       element = await helper.getElement(page, selector);
     }
@@ -156,7 +156,9 @@ ${CircularJSON.stringify(envs, null, '  ')}
     }
 
     if (debug) {
-      if (process.env.PPD_DEBUG_MODE) debugger;
+      if (process.env.PPD_DEBUG_MODE) {
+        debugger;
+      }
     }
 
     await log({

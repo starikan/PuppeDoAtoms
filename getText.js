@@ -10,7 +10,7 @@ module.exports = {
 
       if (element) {
         ({ tagName, text, value } = await page.evaluate(element => {
-          return { tagName: element.tagName, text: element.innerText, value: element.value}
+          return { tagName: element.tagName, text: element.innerText, value: element.value };
         }, element));
 
         // Select fetch data
@@ -27,7 +27,6 @@ module.exports = {
           text = value;
           value = '';
         }
-
       } else {
         throw { message: `Can't find selector ${selector}` };
       }

@@ -84,6 +84,7 @@ function walk(dir) {
   }, {});
 
   fs.writeFileSync(path.join(process.cwd(), '.vscode', 'ppd.code-snippets'), JSON.stringify(snippets));
+  console.log('Done snippets generator.')
 }
 
-console.log(walk('.'));
+walk('.');

@@ -1,12 +1,11 @@
 module.exports = {
   runTest: async function(args) {
-    const { page, data, log, options, helper, levelIndent, _ } = args;
-    let option = helper.anyGet(data, 'options');
+    const { page, data, log, options, levelIndent, _ } = args;
     const screenshot = _.get(options, 'screenshot', false);
-    let X = _.get(data, 'X');
-    let Y = _.get(data, 'Y');
-    let dX = _.get(data, 'dX');
-    let dY = _.get(data, 'dY');
+    const X = _.get(data, 'X');
+    const Y = _.get(data, 'Y');
+    const dX = _.get(data, 'dX');
+    const dY = _.get(data, 'dY');
 
     const mouse = page.mouse;
     const mouseX = mouse._x;
@@ -32,7 +31,7 @@ module.exports = {
       });
     } else {
       throw {
-        message: `Не передан нужный набор параметров. Должно быть сочетания X-Y или dX-dY`,
+        message: 'Не передан нужный набор параметров. Должно быть сочетания X-Y или dX-dY',
       };
     }
   },
