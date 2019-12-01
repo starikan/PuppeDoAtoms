@@ -1,13 +1,19 @@
 module.exports = {
   runTest: async function(args) {
-    const { page, log, levelIndent } = args;
+    const { page, log, options, levelIndent } = args;
+    const { browser = true, server } = options;
     await log({
-      text: 'DEBUG PAGE',
+      text: 'DEBUGER',
       screenshot: false,
       levelIndent: levelIndent + 1,
     });
-    await page.evaluate(() => {
+    if (browser) {
+      await page.evaluate(() => {
+        debugger;
+      });
+    }
+    if (server) {
       debugger;
-    });
+    }
   },
 };

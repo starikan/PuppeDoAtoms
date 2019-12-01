@@ -1,3 +1,4 @@
 name: debugger
 type: atom
+allowOptions: ['browser', 'server']
 runTest: atoms/debugger.js
