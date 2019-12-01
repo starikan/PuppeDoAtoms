@@ -55,8 +55,10 @@ const templateGen = data => {
     return counter;
   };
 
-  counter = genBlock(needData, counter, 'data', 'bD');
-  counter = genBlock(needSelectors, counter, 'selectors', 'bS');
+  counter = genBlock(needData, counter, 'data', 'bindData');
+  counter = genBlock(needData, counter, 'data', 'data');
+  counter = genBlock(needSelectors, counter, 'selectors', 'bindSelector');
+  counter = genBlock(needSelectors, counter, 'selectors', 'selector');
   counter = genBlock(allowOptions, counter, 'options', 'options');
 
   if (needData || needSelectors) {
@@ -67,8 +69,10 @@ const templateGen = data => {
   genBlock(allowResults, counter, 'results', 'r', true);
 
   if (allowResults) {
-    snippet.body.push('    ' + `rF: ""`);
+    snippet.body.push('    ' + `resultFunction: ""`);
     snippet.body.push('    ' + `errorIfResult: "false"`);
+    snippet.body.push('    ' + `while: "false"`);
+    snippet.body.push('    ' + `repeat: 1`);
   }
 
   return snippet;
