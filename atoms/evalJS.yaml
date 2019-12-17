@@ -2,4 +2,3 @@ type: atom
 name: evalJS
 needData: ['js']
 allowResults: ['data']
-runTest: atoms/evalJS.js

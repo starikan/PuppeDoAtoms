@@ -4,4 +4,3 @@ type: atom
 needData: ['text']
 needSelectors: ['selector']
 allowResults: ['exists']
-runTest: atoms/checkText.js

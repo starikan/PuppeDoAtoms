@@ -2,4 +2,3 @@ name: mouseClick
 type: atom
 needSelectors: ['selector']
 needData: ['X', 'Y']
-runTest: atoms/mouseClick.js

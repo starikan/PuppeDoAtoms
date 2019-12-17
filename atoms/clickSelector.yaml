@@ -2,4 +2,3 @@ name: clickSelector
 type: atom
 needSelectors: ['selector']
 allowOptions: ['screenshot', 'fullpage', 'count', 'delay', 'button']
-runTest: atoms/clickSelector.js

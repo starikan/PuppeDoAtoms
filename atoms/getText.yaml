@@ -3,4 +3,3 @@ name: getText
 type: atom
 needSelectors: ['selector']
 allowResults: ['text']
-runTest: atoms/getText.js

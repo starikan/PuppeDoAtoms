@@ -4,4 +4,3 @@ type: atom
 needSelectors: ['selector']
 allowResults: ['count']
 allowOptions: ['timeDellay']
-runTest: atoms/countSelectors.js

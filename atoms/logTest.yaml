@@ -15,4 +15,3 @@ needData:
   - logEnvs?
   - logVars?
   - debug?
-runTest: atoms/logTest.js
