@@ -2,6 +2,7 @@
   "name": "@puppedo/atoms",
   "version": "1.0.0",
   "description": "Atoms for PuppeDo",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/starikan/PuppeDoAtoms.git"
@@ -20,7 +21,10 @@
     "url": "https://github.com/starikan/PuppeDoAtoms/issues"
   },
   "homepage": "https://github.com/starikan/PuppeDoAtoms#readme",
-  "dependencies": {
+  "scripts": {
+    "test": "echo \"No test specified\""
+  },
+  "devDependencies": {
     "js-yaml": "^3.13.1"
   }
 }
