@@ -1,5 +1,5 @@
 {
-  "name": "puppedoatoms",
+  "name": "@puppedo/atoms",
   "version": "1.0.0",
   "description": "Atoms for PuppeDo",
   "repository": {
@@ -9,10 +9,10 @@
   "keywords": [
     "puppeteer",
     "puppedo",
-    "ppd",
     "testing",
     "tests",
-    "e2e"
+    "e2e",
+    "automatization"
   ],
   "author": "Starodubov Sergey <4analit@gmail.com>",
   "license": "ISC",
