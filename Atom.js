@@ -48,7 +48,7 @@ class Atom {
 
       const timer = (this.envs.args || {})['PPD_LOG_TIMER'] || false;
       if (timer) {
-        console.log(`${' '.repeat(35 + 5 * this.levelIndent)} Timer: ${new Date() - startTime} ms.`);
+        console.log(`${' '.repeat(35 + 5 * this.levelIndent)} Atom Timer: ${new Date() - startTime} ms.`);
       }
     } catch (error) {
       throw { message: `Error in Atom` };
