@@ -22,11 +22,25 @@ class Atom {
       this.envs = args.envs;
       this.browser = args.browser;
       this.page = args.page;
-      this.log = args.log;
       this.helper = args.helper;
       this._ = args._;
       this.name = args.name;
       this.description = args.description;
+
+      this.screenshot = (this.options || {})['screenshot'] || false;
+      this.fullpage = (this.options || {})['fullpage'] || false;
+      this.level = (this.options || {})['level'] || 'debug';
+      this.log = function(cusomLog) {
+        args.log({
+          ...{
+            screenshot: this.screenshot,
+            fullpage: this.fullpage,
+            level: this.level,
+            levelIndent: this.levelIndent + 1,
+          },
+          ...cusomLog,
+        });
+      };
 
       await this.atomRun();
     } catch (error) {
