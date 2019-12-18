@@ -7,6 +7,9 @@ class Atom {
 
   async runTest(args = {}) {
     try {
+      const startTime = new Date();
+
+      this.envs = args.envs;
       this.envsId = args.envsId;
       this.envName = args.envName;
       this.envPageName = args.envPageName;
@@ -19,7 +22,6 @@ class Atom {
       this.repeat = args.repeat;
       this.stepId = args.stepId;
       this.env = args.env;
-      this.envs = args.envs;
       this.browser = args.browser;
       this.page = args.page;
       this.helper = args.helper;
@@ -43,6 +45,11 @@ class Atom {
       };
 
       await this.atomRun();
+
+      const timer = (this.envs.args || {})['PPD_LOG_TIMER'] || false;
+      if (timer) {
+        console.log(`${' '.repeat(35 + 5 * this.levelIndent)} Timer: ${new Date() - startTime} ms.`);
+      }
     } catch (error) {
       throw { message: `Error in Atom` };
     }
