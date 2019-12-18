@@ -256,48 +256,87 @@
   'VolumeUp': {'keyCode': 183, 'key': 'VolumeUp', 'code': 'VolumeUp', 'location': 4},
  */
 
-module.exports = {
-  runTest: async function(args) {
-    const { page, log, options, _, levelIndent, data } = args;
-    const screenshot = _.get(options, 'screenshot', false);
-    const count = _.get(options, 'count', 1);
+const instance = new (require('../Atom'))();
+module.exports = { runTest: instance.runTest.bind(instance) };
 
-    const key = _.get(data, 'key', false);
-    const modificator = _.get(data, 'modificator', false);
-    const modificator1 = _.get(data, 'modificator1', false);
-    const modificator2 = _.get(data, 'modificator2', false);
-    if (modificator) {
-      await page.keyboard.down(modificator);
-    }
-    if (modificator1) {
-      await page.keyboard.down(modificator1);
-    }
-    if (modificator2) {
-      await page.keyboard.down(modificator2);
-    }
+// WRITE YOUR LOGIC BELLOW
+instance.atomRun = async function() {
+  const { count = 1 } = this.options;
+  const { key = false, modificator = false, modificator1 = false, modificator2 = false } = this.data;
 
-    for (let i = 0; i < count; i++) {
-      await page.keyboard.press(key);
-    }
+  if (modificator) {
+    await this.page.keyboard.down(modificator);
+  }
+  if (modificator1) {
+    await this.page.keyboard.down(modificator1);
+  }
+  if (modificator2) {
+    await this.page.keyboard.down(modificator2);
+  }
 
-    if (modificator) {
-      await page.keyboard.up(modificator);
-    }
-    if (modificator1) {
-      await page.keyboard.up(modificator1);
-    }
-    if (modificator2) {
-      await page.keyboard.up(modificator2);
-    }
+  for (let i = 0; i < count; i++) {
+    await this.page.keyboard.press(key);
+  }
 
-    await log({
-      text: `Нажаты клавиши = ${modificator ? modificator + '+' : ''}${modificator1 ? modificator1 + '+' : ''}${
-        modificator2 ? modificator2 + '+' : ''
-      }${key}`,
-      screenshot: screenshot,
-      fullpage: false,
-      level: 'debug',
-      levelIndent: levelIndent + 1,
-    });
-  },
+  if (modificator) {
+    await this.page.keyboard.up(modificator);
+  }
+  if (modificator1) {
+    await this.page.keyboard.up(modificator1);
+  }
+  if (modificator2) {
+    await this.page.keyboard.up(modificator2);
+  }
+
+  this.log({
+    text: `Keys pressed: ${modificator ? modificator + '+' : ''}${modificator1 ? modificator1 + '+' : ''}${
+      modificator2 ? modificator2 + '+' : ''
+    }${key}`,
+  });
 };
+
+// module.exports = {
+//   runTest: async function(args) {
+//     const { page, log, options, _, levelIndent, data } = args;
+//     const screenshot = _.get(options, 'screenshot', false);
+//     const count = _.get(options, 'count', 1);
+
+//     const key = _.get(data, 'key', false);
+//     const modificator = _.get(data, 'modificator', false);
+//     const modificator1 = _.get(data, 'modificator1', false);
+//     const modificator2 = _.get(data, 'modificator2', false);
+//     if (modificator) {
+//       await page.keyboard.down(modificator);
+//     }
+//     if (modificator1) {
+//       await page.keyboard.down(modificator1);
+//     }
+//     if (modificator2) {
+//       await page.keyboard.down(modificator2);
+//     }
+
+//     for (let i = 0; i < count; i++) {
+//       await page.keyboard.press(key);
+//     }
+
+//     if (modificator) {
+//       await page.keyboard.up(modificator);
+//     }
+//     if (modificator1) {
+//       await page.keyboard.up(modificator1);
+//     }
+//     if (modificator2) {
+//       await page.keyboard.up(modificator2);
+//     }
+
+//     await log({
+//       text: `Нажаты клавиши = ${modificator ? modificator + '+' : ''}${modificator1 ? modificator1 + '+' : ''}${
+//         modificator2 ? modificator2 + '+' : ''
+//       }${key}`,
+//       screenshot: screenshot,
+//       fullpage: false,
+//       level: 'debug',
+//       levelIndent: levelIndent + 1,
+//     });
+//   },
+// };
