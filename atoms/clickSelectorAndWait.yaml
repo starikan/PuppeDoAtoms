@@ -7,7 +7,7 @@ runTest:
       bS: { selector: selector }
   - waitForSelector:
       bS: { selector: selectorWait }
-      if: "selector ? true : false"
+      if: 'selector ? true : false'
   - waitTime:
       bD: { time: time }
-      if: "time ? true : false"
+      if: 'time ? true : false'

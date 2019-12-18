@@ -1,6 +1,28 @@
 class Atom {
   constructor() {}
 
+  async getElement(page, selector, allElements = false) {
+    if (page && selector && typeof selector === 'string' && typeof page === 'object') {
+      let element;
+      if (selector.startsWith('xpath:')) {
+        selector = selector.replace(/^xpath:/, '');
+        element = await page.$x(selector);
+        if (!allElements) {
+          if (element.length > 1) {
+            throw { message: `Finded more then 1 xpath elements ${selector}` };
+          }
+          element = element[0];
+        }
+      } else {
+        selector = selector.replace(/^css:/, '');
+        element = allElements ? await page.$$(selector) : await page.$(selector);
+      }
+      return element;
+    } else {
+      return false;
+    }
+  }
+
   async atomRun() {
     console.log('Empty Atom Run');
   }
@@ -24,6 +46,7 @@ class Atom {
       this.env = args.env;
       this.browser = args.browser;
       this.page = args.page;
+      // TODO: delete this arter refactoring
       this.helper = args.helper;
       this._ = args._;
       this.name = args.name;
@@ -31,7 +54,7 @@ class Atom {
 
       this.screenshot = (this.options || {})['screenshot'] || false;
       this.fullpage = (this.options || {})['fullpage'] || false;
-      this.level = (this.options || {})['level'] || 'debug';
+      this.level = (this.options || {})['level'] || 'raw';
       this.log = function(cusomLog) {
         args.log({
           ...{

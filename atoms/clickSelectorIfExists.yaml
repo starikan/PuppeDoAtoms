@@ -10,4 +10,4 @@ runTest:
       result: { clickSelectorIfExists_Result: exists }
   - clickSelector:
       bindSelectors: { selector: clickSelectorIfExists_Selector }
-      if: "clickSelectorIfExists_Result == true"
+      if: 'clickSelectorIfExists_Result == true'

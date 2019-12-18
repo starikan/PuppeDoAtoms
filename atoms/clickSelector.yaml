@@ -1,4 +1,4 @@
 name: clickSelector
 type: atom
 needSelectors: ['selector']
-allowOptions: ['screenshot', 'fullpage', 'count', 'delay', 'button']
+allowOptions: ['count', 'delay', 'button']
