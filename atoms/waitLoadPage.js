@@ -1,14 +1,24 @@
-module.exports = {
-  runTest: async function(args) {
-    const { page, options, log, levelIndent, _ } = args;
+const instance = new (require('../Atom'))();
+module.exports = { runTest: instance.runTest.bind(instance) };
 
-    await page.waitForNavigation({ waitUntil: _.get(options, 'waitUntil', 'load') });
-    await log({
-      text: 'waitLoadPage',
-      screenshot: false,
-      fullpage: false,
-      level: 'debug',
-      levelIndent: levelIndent + 1,
-    });
-  },
+// WRITE YOUR LOGIC BELLOW
+instance.atomRun = async function() {
+  const { waitUntil = 'load' } = this.options;
+  await this.page.waitForNavigation({ waitUntil });
+  this.log({ text: 'Waiting page load' });
 };
+
+// module.exports = {
+//   runTest: async function(args) {
+//     const { page, options, log, levelIndent, _ } = args;
+
+//     await page.waitForNavigation({ waitUntil: _.get(options, 'waitUntil', 'load') });
+//     await log({
+//       text: 'waitLoadPage',
+//       screenshot: false,
+//       fullpage: false,
+//       level: 'debug',
+//       levelIndent: levelIndent + 1,
+//     });
+//   },
+// };

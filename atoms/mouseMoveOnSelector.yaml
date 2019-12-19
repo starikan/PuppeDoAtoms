@@ -1,4 +1,4 @@
 name: mouseMoveOnSelector
 type: atom
 needSelectors: ['selector']
-needData: ['dX', 'dY']
+needData: ['dX?', 'dY?']
