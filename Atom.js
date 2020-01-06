@@ -46,11 +46,10 @@ class Atom {
       this.env = args.env;
       this.browser = args.browser;
       this.page = args.page;
-      // TODO: delete this arter refactoring
-      this.helper = args.helper;
       this._ = args._;
       this.name = args.name;
       this.description = args.description;
+      this.socket = args.socket;
 
       this.screenshot = (this.options || {})['screenshot'] || false;
       this.fullpage = (this.options || {})['fullpage'] || false;
