@@ -9,7 +9,7 @@ class Atom {
         element = await page.$x(selector);
         if (!allElements) {
           if (element.length > 1) {
-            throw { message: `Finded more then 1 xpath elements ${selector}` };
+            throw { message: `Find more then 1 xpath elements ${selector}` };
           }
           element = element[0];
         }
@@ -55,7 +55,7 @@ class Atom {
       this.screenshot = (this.options || {})['screenshot'] || false;
       this.fullpage = (this.options || {})['fullpage'] || false;
       this.level = (this.options || {})['level'] || 'raw';
-      this.log = function(cusomLog) {
+      this.log = function(customLog) {
         args.log({
           ...{
             screenshot: this.screenshot,
@@ -63,7 +63,7 @@ class Atom {
             level: this.level,
             levelIndent: this.levelIndent + 1,
           },
-          ...cusomLog,
+          ...customLog,
         });
       };
 
