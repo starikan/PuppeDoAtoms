@@ -1,7 +1,7 @@
 const path = require('path');
 const Atom = require('./Atom');
 
-const ATOMS_PATHS = ['./main', './checks', './modify', './files', './blank', './mouse', './checks'];
+const ATOMS_PATHS = ['./main', './checks', './modify', './files', './blank', './mouse', './checks', './cdp'];
 
 const resolvedPaths = ATOMS_PATHS.map(v => path.resolve(__dirname, v));
 
