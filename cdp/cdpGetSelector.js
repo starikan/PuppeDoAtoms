@@ -205,7 +205,13 @@ instance.atomRun = async function() {
           // const { x, y } = data;
           // const { nodeId } = await client.send('DOM.getNodeForLocation', { x, y });
           // const nodeIdDescribe = await client.send('DOM.describeNode', { nodeId });
-          // debugger;
+          this.socket.sendYAML({
+            data: selectorsCheck,
+            type: 'atom',
+            name: 'cdpGetSelector',
+            envsId: this.envsId,
+            stepId: this.stepId,
+          });
           console.log(selectorsCheck);
         } catch (err) {
           // debugger;
