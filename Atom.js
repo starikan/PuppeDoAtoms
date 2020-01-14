@@ -66,12 +66,14 @@ class Atom {
         });
       };
 
-      await this.atomRun();
+      const result = await this.atomRun();
 
       const timer = (this.envs.args || {})['PPD_LOG_TIMER'] || false;
       if (timer) {
         console.log(`${' '.repeat(21)}${' | '.repeat(this.levelIndent + 1)} ⌛: ${new Date() - startTime} ms.`);
       }
+
+      return result;
     } catch (error) {
       throw { message: `Error in Atom` };
     }
