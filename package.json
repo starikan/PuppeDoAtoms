@@ -1,6 +1,6 @@
 {
   "name": "@puppedo/atoms",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "description": "Atoms for PuppeDo",
   "main": "index.js",
   "repository": {
@@ -23,5 +23,8 @@
   "homepage": "https://github.com/starikan/PuppeDoAtoms#readme",
   "scripts": {
     "test": "echo \"No test specified\""
+  },
+  "dependencies": {
+    "@puppedo/atoms-core": "1.0.0"
   }
 }

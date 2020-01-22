@@ -1,5 +1,6 @@
 const path = require('path');
-const Atom = require('./Atom');
+
+const Atom = require('@puppedo/atoms-core');
 
 const ATOMS_PATHS = [
   './main',
