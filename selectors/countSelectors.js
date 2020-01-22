@@ -4,15 +4,15 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 // WRITE YOUR LOGIC BELLOW
 instance.atomRun = async function() {
   const { selector } = this.selectors;
-  const { timeDellay } = this.options;
+  const { timeDelay } = this.options;
 
-  if (timeDellay) {
-    await this.page.waitFor(timeDellay);
+  if (timeDelay) {
+    await this.page.waitFor(timeDelay);
   }
 
   this.log({ text: `Counting selectors: '${selector}'` });
   const elements = await this.getElement(this.page, selector, true);
-  await log({ text: `Selectors '${selector}' found '${elements.length}'` });
+  this.log({ text: `Selectors '${selector}' found '${elements.length}'` });
 
   return { count: elements.length };
 };
