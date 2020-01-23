@@ -1,4 +1,4 @@
-const instance = new (require('../Atom'))();
+const instance = new (require('@puppedo/atoms-core'))();
 module.exports = { runTest: instance.runTest.bind(instance) };
 
 // WRITE YOUR LOGIC BELLOW

@@ -256,7 +256,7 @@
   'VolumeUp': {'keyCode': 183, 'key': 'VolumeUp', 'code': 'VolumeUp', 'location': 4},
  */
 
-const instance = new (require('../Atom'))();
+const instance = new (require('@puppedo/atoms-core'))();
 module.exports = { runTest: instance.runTest.bind(instance) };
 
 // WRITE YOUR LOGIC BELLOW
