@@ -7,7 +7,9 @@ instance.atomRun = async function() {
   const element = await this.getElement(this.page, selector);
 
   if (element) {
-    const { tagName, innerText, value } = await this.page.evaluate(element => element, element);
+    const { tagName, innerText, value } = await this.page.evaluate(element => {
+      return { tagName: element.tagName, innerText: element.innerText, value: element.value };
+    }, element);
 
     let text = innerText;
 
