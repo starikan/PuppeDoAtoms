@@ -1,6 +1,6 @@
 {
   "name": "@puppedo/atoms",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Atoms for PuppeDo",
   "main": "index.js",
   "repository": {
@@ -25,6 +25,6 @@
     "test": "echo \"No test specified\""
   },
   "dependencies": {
-    "@puppedo/atoms-core": "1.0.0"
+    "@puppedo/atoms-core": "1.0.1"
   }
 }
