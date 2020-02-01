@@ -1,0 +1,7 @@
+type: atom
+name: debuggerBrowser
+runTest:
+  - debugger:
+      options:
+        server: false
+        browser: true
