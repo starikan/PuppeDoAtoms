@@ -10,10 +10,10 @@ instance.atomRun = async function() {
   const logEntry = `Type in selector: '${input}', text: '${text}'`;
 
   if (!element) {
-    this.log({ text: logEntry, element, level: 'error' });
+    await this.log({ text: logEntry, element, level: 'error' });
     throw { message: logEntry };
   }
 
   await element.type(String(text));
-  this.log({ text: logEntry, element });
+  await this.log({ text: logEntry, element });
 };
