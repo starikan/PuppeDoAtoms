@@ -15,7 +15,7 @@ instance.atomRun = async function() {
   }
   fs.writeFileSync(path.join(folder, filename), headersText + '\n' + csvText);
 
-  this.log({ text: `Write CSV: ${filename}` });
+  await this.log({ text: `Write CSV: ${filename}` });
 };
 
 // module.exports = {

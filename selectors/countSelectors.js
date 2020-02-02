@@ -10,9 +10,9 @@ instance.atomRun = async function() {
     await this.page.waitFor(timeDelay);
   }
 
-  this.log({ text: `Counting selectors: '${selector}'` });
+  await this.log({ text: `Counting selectors: '${selector}'` });
   const elements = await this.getElement(this.page, selector, true);
-  this.log({ text: `Selectors '${selector}' found '${elements.length}'` });
+  await this.log({ text: `Selectors '${selector}' found '${elements.length}'` });
 
   return { count: elements.length };
 };

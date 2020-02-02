@@ -6,12 +6,12 @@ instance.atomRun = async function() {
   const { selector } = this.selectors;
   const element = await this.getElement(this.page, selector);
 
-  this.log({ text: `Check selector exist: '${selector}'` });
+  await this.log({ text: `Check selector exist: '${selector}'` });
 
   if (element) {
-    this.log({ text: `Селектор найден = ${selector}` });
+    await this.log({ text: `Селектор найден = ${selector}` });
   } else {
-    this.log({ text: `Селектор НЕ найден = ${selector}`, level: 'error' });
+    await this.log({ text: `Селектор НЕ найден = ${selector}`, level: 'error' });
   }
   return { exists: !!element };
 };

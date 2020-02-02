@@ -5,7 +5,7 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 instance.atomRun = async function() {
   const { browser = true, server } = this.options;
 
-  this.log({ text: '*********** DEBUGGER ***********' });
+  await this.log({ text: '*********** DEBUGGER ***********' });
 
   if (browser) {
     await this.page.evaluate(() => {

@@ -15,7 +15,7 @@ instance.atomRun = async function() {
     }, selectors[i]);
   }
 
-  this.log({ text: `Selectors deleted: '${JSON.stringify(selectors)}'` });
+  await this.log({ text: `Selectors deleted: '${JSON.stringify(selectors)}'` });
 };
 
 // module.exports = {

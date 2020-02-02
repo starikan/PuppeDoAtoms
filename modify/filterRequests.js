@@ -15,7 +15,7 @@ instance.atomRun = async function() {
     }
   });
 
-  this.log({ text: `Filter requests enable with mask: '${JSON.stringify(filters)}'` });
+  await this.log({ text: `Filter requests enable with mask: '${JSON.stringify(filters)}'` });
 };
 
 // module.exports = {

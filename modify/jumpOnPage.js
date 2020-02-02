@@ -5,7 +5,7 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 instance.atomRun = async function() {
   const { name } = this.data;
   this.envs.set('current.page', name);
-  this.log({ text: `Switch on page: '${name}'` });
+  await this.log({ text: `Switch on page: '${name}'` });
 };
 
 // module.exports = {

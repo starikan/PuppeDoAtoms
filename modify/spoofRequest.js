@@ -21,7 +21,7 @@ instance.atomRun = async function() {
     }
   });
 
-  this.log({ text: `Request '${urlregexp}' replace with file '${filename}'` });
+  await this.log({ text: `Request '${urlregexp}' replace with file '${filename}'` });
 };
 
 // module.exports = {

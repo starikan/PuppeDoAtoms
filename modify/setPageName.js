@@ -12,7 +12,7 @@ instance.atomRun = async function() {
     this.env.set(`state.pages.${name}`, allPages[position]);
   }
 
-  this.log({ text: `Page set name: '${name}'` });
+  await this.log({ text: `Page set name: '${name}'` });
 };
 
 // module.exports = {

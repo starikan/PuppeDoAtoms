@@ -5,5 +5,5 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 instance.atomRun = async function() {
   const { url } = this.data;
   await this.page.goto(url);
-  this.log({ text: `Go to: ${url}` });
+  await this.log({ text: `Go to: ${url}` });
 };

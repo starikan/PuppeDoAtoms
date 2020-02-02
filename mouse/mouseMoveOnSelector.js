@@ -14,7 +14,7 @@ instance.atomRun = async function() {
   const mouse = this.page.mouse;
   await mouse.move(elementX + dX, elementY + dY);
 
-  this.log({
+  await this.log({
     text: `Mouse move on selector '${selector}' with gap from top rigth corner dX = ${dX}, dY = ${dY}`,
     element,
   });

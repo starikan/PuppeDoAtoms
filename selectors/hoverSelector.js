@@ -8,7 +8,7 @@ instance.atomRun = async function() {
 
   await element.hover(selector);
 
-  this.log({ text: `Hover selector: '${selector}'`, element });
+  await this.log({ text: `Hover selector: '${selector}'`, element });
 };
 
 // module.exports = {

@@ -8,7 +8,7 @@ instance.atomRun = async function() {
   const fs = require('fs');
   fs.appendFileSync(fileName, string);
 
-  this.log({ text: `Append to file: '${fileName}' data: '${string}'` });
+  await this.log({ text: `Append to file: '${fileName}' data: '${string}'` });
 };
 
 // module.exports = {

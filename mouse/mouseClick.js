@@ -10,7 +10,7 @@ instance.atomRun = async function() {
   const mouse = this.page.mouse;
   await mouse.click(X, Y);
 
-  this.log({ text: `Mouse click in coords: X = ${X}, Y = ${Y}`, element });
+  await this.log({ text: `Mouse click in coords: X = ${X}, Y = ${Y}`, element });
 };
 
 // module.exports = {

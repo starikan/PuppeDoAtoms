@@ -5,7 +5,7 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 instance.atomRun = async function() {
   const { width, height, deviceScaleFactor, isMobile, hasTouch, isLandscape } = await this.page.viewport();
 
-  this.log({ text: `Getting window attributes width='${width}', height='${height}'` });
+  await this.log({ text: `Getting window attributes width='${width}', height='${height}'` });
 
   return { width, height, deviceScaleFactor, isMobile, hasTouch, isLandscape };
 };

@@ -11,10 +11,10 @@ instance.atomRun = async function() {
 
   if (!this._.isUndefined(dX) && !this._.isUndefined(dY)) {
     await mouse.move(mouseX + dX, mouseY + dY, { steps: 50 });
-    this.log({ text: `Mouse move on range dX = ${dX}, dY = ${dY}` });
+    await this.log({ text: `Mouse move on range dX = ${dX}, dY = ${dY}` });
   } else if (!this._.isUndefined(X) && !this._.isUndefined(Y)) {
     await mouse.move(X, Y);
-    this.log({ text: `Mouse move on position X = ${X}, Y = ${Y}` });
+    await this.log({ text: `Mouse move on position X = ${X}, Y = ${Y}` });
   } else {
     throw { message: 'Bad data. Must be X-Y or dX-dY.' };
   }

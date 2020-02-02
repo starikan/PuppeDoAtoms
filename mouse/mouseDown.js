@@ -6,7 +6,7 @@ instance.atomRun = async function() {
   const mouse = this.page.mouse;
   await mouse.down();
 
-  this.log({ text: 'Mouse down' });
+  await this.log({ text: 'Mouse down' });
 };
 
 // module.exports = {

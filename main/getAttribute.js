@@ -15,7 +15,7 @@ instance.atomRun = async function() {
     attribute,
   );
 
-  this.log({
+  await this.log({
     text: `Get attribute: '${attribute}' from selector: '${selector}' with result: '${attributeValue}'`,
     element,
   });

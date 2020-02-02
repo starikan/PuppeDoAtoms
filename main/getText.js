@@ -25,7 +25,7 @@ instance.atomRun = async function() {
       text = value;
     }
 
-    this.log({ text: `Get text: '${text}' from selector: '${selector}'`, element });
+    await this.log({ text: `Get text: '${text}' from selector: '${selector}'`, element });
 
     return { text };
   } else {

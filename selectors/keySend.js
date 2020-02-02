@@ -288,7 +288,7 @@ instance.atomRun = async function() {
     await this.page.keyboard.up(modificator2);
   }
 
-  this.log({
+  await this.log({
     text: `Keys pressed: ${modificator ? modificator + '+' : ''}${modificator1 ? modificator1 + '+' : ''}${
       modificator2 ? modificator2 + '+' : ''
     }${key}`,

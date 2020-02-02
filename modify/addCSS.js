@@ -5,5 +5,5 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 instance.atomRun = async function() {
   const { css } = this.data;
   await this.page.addStyleTag({ content: css });
-  this.log({ text: `CSS inject on the page: ${css}` });
+  await this.log({ text: `CSS inject on the page: ${css}` });
 };

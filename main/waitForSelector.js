@@ -19,5 +19,5 @@ instance.atomRun = async function() {
     await this.page.waitForSelector(selector, { visible, hidden: hide });
   }
 
-  this.log({ text: `Wait for selector: '${selector}'` });
+  await this.log({ text: `Wait for selector: '${selector}'` });
 };

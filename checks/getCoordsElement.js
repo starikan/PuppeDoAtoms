@@ -9,7 +9,7 @@ instance.atomRun = async function() {
   const boxElement = await element.boundingBox();
   const { x, y, width, height } = boxElement;
 
-  this.log({ text: `Selector '${selector}' coords: X = ${x}, Y = ${y}, WIDTH = ${width}, HEIGHT = ${height}` });
+  await this.log({ text: `Selector '${selector}' coords: X = ${x}, Y = ${y}, WIDTH = ${width}, HEIGHT = ${height}` });
 
   return { x, y, width, height };
 };

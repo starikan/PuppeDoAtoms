@@ -8,9 +8,9 @@ instance.atomRun = async function() {
   const exist = allPages.map(page => page.url().includes(url)).some(v => v);
 
   if (exist) {
-    this.log({ text: `URL found: '${url}'` });
+    await this.log({ text: `URL found: '${url}'` });
   } else {
-    this.log({ text: `URL not found: '${url}'`, level: 'error' });
+    await this.log({ text: `URL not found: '${url}'`, level: 'error' });
   }
   return { exists };
 };

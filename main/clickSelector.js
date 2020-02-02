@@ -7,7 +7,7 @@ instance.atomRun = async function() {
   const { count = 1, delay = 1, button = 'left' } = this.options;
   const element = await this.getElement(this.page, selector);
 
-  this.log({ text: `Click selector: '${selector}'`, element });
+  await this.log({ text: `Click selector: '${selector}'`, element });
 
   for (let i = 0; i < count; i++) {
     await element.click({ delay, button });

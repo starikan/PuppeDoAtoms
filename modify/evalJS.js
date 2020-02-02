@@ -6,7 +6,7 @@ instance.atomRun = async function() {
   const { js } = this.data;
 
   const data = await this.page.evaluate(js);
-  this.log({ text: `Evaluate JS: '${js}' with result '${data}'` });
+  await this.log({ text: `Evaluate JS: '${js}' with result '${data}'` });
 
   return { data };
 };
