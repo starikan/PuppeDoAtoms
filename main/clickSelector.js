@@ -10,6 +10,11 @@ instance.atomRun = async function() {
   await this.log({ text: `Click selector: '${selector}'`, element });
 
   for (let i = 0; i < count; i++) {
-    await element.click({ delay, button });
+    try {
+      await element.click({ delay, button });
+    } catch (error) {
+      await this.log({ text: `Can't click selector: '${selector}'`, element, screenshot: true, extendInfo: true });
+      throw error;
+    }
   }
 };
