@@ -25,6 +25,6 @@
     "test": "echo \"No test specified\""
   },
   "dependencies": {
-    "@puppedo/atoms-core": "1.1.0"
+    "@puppedo/atoms-core": "1.1.1"
   }
 }
