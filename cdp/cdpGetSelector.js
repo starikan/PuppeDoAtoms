@@ -40,7 +40,7 @@ instance.atomRun = async function() {
         'screenY',
         'shiftKey',
       ];
-      const exportData = _.pick(event, fields);
+      const exportData = this._.pick(event, fields);
 
       exportData.path = [];
       event.path.forEach((p, i) => {
@@ -79,7 +79,7 @@ instance.atomRun = async function() {
           fieldsPath = [...fieldsPath, 'innerHTML', 'innerText', 'outerHTML', 'outerText', 'text'];
         }
 
-        const path = _.pick(p, fieldsPath);
+        const path = this._.pick(p, fieldsPath);
 
         path.attributes = {};
         if (p.attributes && p.attributes.length) {
@@ -176,7 +176,7 @@ instance.atomRun = async function() {
       .map(v => v[0])
       .sort(
         (a, b) =>
-          a.split('').filter(v => ['.', '>'].includes(v)).length >
+          a.split('').filter(v => ['.', '>'].includes(v)).length -
           b.split('').filter(v => ['.', '>'].includes(v)).length,
       );
     return counts;
