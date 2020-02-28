@@ -1,4 +1,19 @@
 name: clickSelector
 type: atom
 needSelectors: ['selector']
-allowOptions: ['count', 'delay', 'button']
+allowOptions: ['count', 'delay', 'button', 'hidden', 'visible', 'timeDellay']
+
+runTest:
+  - waitForSelector:
+      bS: { selector: selector }
+      bO:
+        hidden: hidden
+        visible: visible
+        timeDellay: timeDellay
+
+  - clickSelectorRaw:
+      bS: { selector: selector }
+      bO:
+        count: count
+        delay: delay
+        button: button
