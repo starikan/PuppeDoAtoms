@@ -7,7 +7,7 @@ instance.atomRun = async function() {
   const element = await this.getElement(this.page, selector);
 
   if (element) {
-    await this.log({ text: `Check selector exist: '${selector}'` });
+    await this.log({ text: `Check selector exist: '${selector}'`, element });
   } else {
     await this.log({ text: `Check selector NOT exist: '${selector}'` });
   }
