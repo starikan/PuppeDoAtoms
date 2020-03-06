@@ -1,4 +1,4 @@
 name: clickSelector
 type: atom
 needSelectors: ['selector']
-allowOptions: ['count', 'delay', 'button']
+allowOptions: ['count', 'delay', 'button', 'logAfter']
