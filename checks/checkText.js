@@ -11,9 +11,9 @@ instance.atomRun = async function() {
   const exists = innerText === text;
 
   if (exists) {
-    await log({ text: `Text '${text}' found on element '${selector}'`, element });
+    await this.log({ text: `Text '${text}' found on element '${selector}'`, element });
   } else {
-    await log({ text: `Text '${text}' not found on element '${selector}'`, screenshot: true, element, level: 'error' });
+    await this.log({ text: `Text '${text}' not found on element '${selector}'`, screenshot: true, element, level: 'error' });
   }
 
   return { exists };
