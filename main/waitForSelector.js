@@ -12,11 +12,11 @@ instance.atomRun = async function() {
   }
 
   if (selector.startsWith('xpath:')) {
-    selector = this._.trimStart(selector, 'xpath:');
-    await this.page.waitForXPath(selector, { visible, hidden: hide });
+    const selectorClean = selector.replace(/^xpath:/, '');
+    await this.page.waitForXPath(selectorClean, { visible, hidden: hide });
   } else {
-    selector = this._.trimStart(selector, 'css:');
-    await this.page.waitForSelector(selector, { visible, hidden: hide });
+    const selectorClean = selector.replace(/^css:/, '');
+    await this.page.waitForSelector(selectorClean, { visible, hidden: hide });
   }
 
   await this.log({ text: `Wait for selector: '${selector}'` });

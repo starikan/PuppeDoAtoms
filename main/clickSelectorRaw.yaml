@@ -1,0 +1,4 @@
+name: clickSelectorRaw
+type: atom
+needSelectors: ['selector']
+allowOptions: ['count', 'delay', 'button', 'logAfter']
