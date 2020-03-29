@@ -1,4 +1,4 @@
 name: waitForSelector
 type: atom
 needSelectors: ['selector']
-allowOptions: ['hidden', 'visible', 'timeDellay']
+allowOptions: ['hidden', 'visible', 'timeDellayBeforeWait', 'timeDellayAfterWait']

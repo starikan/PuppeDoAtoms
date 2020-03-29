@@ -5,10 +5,15 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 instance.atomRun = async function() {
   let { selector } = this.selectors;
 
-  const { hide, visible, timeDellay } = this.options;
+  const { hide, visible, timeDellay, timeDellayBeforeWait, timeDellayAfterWait } = this.options;
 
+  // TODO: Backward compatibility, remove in major version > 3
   if (timeDellay) {
     await this.page.waitFor(timeDellay);
+  }
+
+  if (timeDellayBeforeWait) {
+    await this.page.waitFor(timeDellayBeforeWait);
   }
 
   if (selector.startsWith('xpath:')) {
@@ -17,6 +22,10 @@ instance.atomRun = async function() {
   } else {
     const selectorClean = selector.replace(/^css:/, '');
     await this.page.waitForSelector(selectorClean, { visible, hidden: hide });
+  }
+
+  if (timeDellayAfterWait) {
+    await this.page.waitFor(timeDellayAfterWait);
   }
 
   await this.log({ text: `Wait for selector: '${selector}'` });

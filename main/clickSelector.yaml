@@ -2,7 +2,7 @@ type: atom
 name: clickSelector
 descriprion: Wait selector and click
 needSelectors: ['selector']
-allowOptions: ['count', 'delay', 'button', 'logAfter', 'hidden', 'visible', 'timeDellay']
+allowOptions: ['count', 'delay', 'button', 'logAfter', 'hidden', 'visible', 'timeDellayBeforeWait', 'timeDellayAfterWait']
 runTest:
   - waitForSelector:
      description: Wait selector
