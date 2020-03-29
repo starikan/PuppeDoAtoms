@@ -4,7 +4,7 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 // WRITE YOUR LOGIC BELLOW
 instance.atomRun = async function() {
   const { selector } = this.selectors;
-  const { count = 1, delay = 1, button = 'left', logAfter = false } = this.options;
+  const { count = 1, delay = 1, button = 'left', logAfter = false, timeDellayAfterClick = 0 } = this.options;
   const element = await this.getElement(this.page, selector);
 
   for (let i = 0; i < count; i++) {
@@ -25,6 +25,10 @@ instance.atomRun = async function() {
         level: 'error',
       });
       throw error;
+    }
+
+    if (timeDellayAfterClick) {
+      await this.page.waitFor(timeDellayAfterClick);
     }
   }
 };
