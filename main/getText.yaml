@@ -3,3 +3,13 @@ name: getText
 type: atom
 needSelectors: ['selector']
 allowResults: ['text']
+allowOptions: ['hidden', 'visible', 'timeDellayBeforeWait', 'timeDellayAfterWait']
+
+runTest:
+  - waitForSelector:
+      description: Wait selector
+      bindData: { selector: selector }
+
+  - getTextRaw:
+      description: Get text from selector
+      bindSelector: { selector: selector }

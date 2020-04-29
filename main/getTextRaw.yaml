@@ -1,0 +1,5 @@
+---
+name: getTextRaw
+type: atom
+needSelectors: ['selector']
+allowResults: ['text']
