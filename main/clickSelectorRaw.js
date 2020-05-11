@@ -2,7 +2,8 @@ const instance = new (require('@puppedo/atoms-core'))();
 module.exports = { runTest: instance.runTest.bind(instance) };
 
 // WRITE YOUR LOGIC BELLOW
-instance.atomRun = async function() {
+instance.atomRun = async function () {
+  if (this.debug) debugger;
   const { selector } = this.selectors;
   const { count = 1, delay = 1, button = 'left', logAfter = false, timeDellayAfterClick = 0 } = this.options;
   const element = await this.getElement(this.page, selector);
