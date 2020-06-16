@@ -2,3 +2,6 @@
 ---
 name: case
 type: atom
+logOptions:
+  textColor: black
+  backgroundColor: white
