@@ -2,12 +2,18 @@ type: atom
 name: clickSelector
 descriprion: Wait selector and click
 needSelectors: ['selector']
+needData: ['selectorNumber?']
 allowOptions: ['count', 'delay', 'button', 'logAfter', 'hidden', 'visible', 'timeDellayBeforeWait', 'timeDellayAfterWait', 'timeDellayAfterClick']
 runTest:
   - waitForSelector:
      description: Wait selector
      bindSelector: { selector: selector }
 
+  - blank:
+      if: 'selectorNumber === null'
+      const: { selectorNumber: 0 }
+
   - clickSelectorRaw:
       description: Click
+      bindData: { selectorNumber: selectorNumber }
       bindSelector: { selector: selector }

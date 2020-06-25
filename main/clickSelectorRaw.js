@@ -5,8 +5,9 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 instance.atomRun = async function () {
   if (this.debug) debugger;
   const { selector } = this.selectors;
+  const { selectorNumber = 0 } = this.data;
   const { count = 1, delay = 1, button = 'left', logAfter = false, timeDellayAfterClick = 0 } = this.options;
-  const element = await this.getElement(this.page, selector);
+  const element = ((await this.getElement(this.page, selector, true)) || [])[selectorNumber];
 
   for (let i = 0; i < count; i++) {
     try {
