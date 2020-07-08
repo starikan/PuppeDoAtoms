@@ -5,6 +5,8 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 instance.atomRun = async function() {
   const { input } = this.selectors;
   const { text } = this.data;
+  const { noClearInput } = this.options;
+
   const element = await this.getElement(this.page, input);
 
   const logEntry = `Type in selector: '${input}', text: '${text}'`;
@@ -12,6 +14,14 @@ instance.atomRun = async function() {
   if (!element) {
     await this.log({ text: logEntry, element, level: 'error' });
     throw { message: logEntry };
+  }
+
+  if (!noClearInput) {
+    await element.focus();
+    await this.page.keyboard.down('Control');
+    await this.page.keyboard.press('A');
+    await this.page.keyboard.up('Control');
+    await this.page.keyboard.press('Backspace');
   }
 
   await element.type(String(text));

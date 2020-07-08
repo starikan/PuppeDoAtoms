@@ -2,3 +2,4 @@ name: typeInputRaw
 type: atom
 needSelectors: ['input']
 needData: ['text']
+allowOptions: ['noClearInput']
