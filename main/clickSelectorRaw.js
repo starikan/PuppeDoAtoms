@@ -5,7 +5,7 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 instance.atomRun = async function () {
   const { selector } = this.selectors;
   const { selectorNumber = 0 } = this.data;
-  const { count = 1, delay = 1, button = 'left', logAfter = false, timeDellayAfterClick = 0 } = this.options;
+  const { count = 1, delay = 1, button = 'left', logAfter = false, timeDelayAfterClick = 0 } = this.options;
   const element = ((await this.getElement(this.page, selector, true)) || [])[selectorNumber];
 
   for (let i = 0; i < count; i++) {
@@ -28,8 +28,8 @@ instance.atomRun = async function () {
       throw error;
     }
 
-    if (timeDellayAfterClick) {
-      await this.page.waitFor(timeDellayAfterClick);
+    if (timeDelayAfterClick) {
+      await this.page.waitFor(timeDelayAfterClick);
     }
   }
 };

@@ -22,9 +22,9 @@ instance.atomRun = async function() {
 //     const { page, selectors, options, log, helper, levelIndent } = args;
 //     const selector = helper.anyGet(selectors, 'selector');
 
-//     const timeDellay = helper.anyGet(options, 'timeDellay');
-//     if (timeDellay) {
-//       await page.waitFor(timeDellay);
+//     const timeDelay = helper.anyGet(options, 'timeDelay');
+//     if (timeDelay) {
+//       await page.waitFor(timeDelay);
 //     }
 
 //     await log({

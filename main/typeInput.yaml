@@ -3,7 +3,7 @@ name: typeInput
 descriprion: Wait selector and type text in input
 needSelectors: ['selector']
 needData: ['text']
-allowOptions: ['hidden', 'visible', 'timeDellayBeforeWait', 'timeDellayAfterWait', 'noClearInput']
+allowOptions: ['hidden', 'visible', 'timeDelayBeforeWait', 'timeDelayAfterWait', 'noClearInput']
 runTest:
   - waitForSelector:
      description: Wait selector
