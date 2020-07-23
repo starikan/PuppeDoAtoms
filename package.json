@@ -1,6 +1,6 @@
 {
   "name": "@puppedo/atoms",
-  "version": "3.3.5",
+  "version": "3.4.0",
   "description": "Atoms for PuppeDo",
   "main": "index.js",
   "repository": {
