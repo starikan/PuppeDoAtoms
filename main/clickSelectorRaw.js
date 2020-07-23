@@ -3,7 +3,6 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 
 // WRITE YOUR LOGIC BELLOW
 instance.atomRun = async function () {
-  if (this.debug) debugger;
   const { selector } = this.selectors;
   const { selectorNumber = 0 } = this.data;
   const { count = 1, delay = 1, button = 'left', logAfter = false, timeDellayAfterClick = 0 } = this.options;

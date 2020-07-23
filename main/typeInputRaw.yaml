@@ -1,5 +1,5 @@
 name: typeInputRaw
 type: atom
-needSelectors: ['input']
+needSelectors: ['selector']
 needData: ['text']
 allowOptions: ['noClearInput']

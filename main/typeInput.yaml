@@ -1,15 +1,15 @@
 type: atom
 name: typeInput
 descriprion: Wait selector and type text in input
-needSelectors: ['input']
+needSelectors: ['selector']
 needData: ['text']
 allowOptions: ['hidden', 'visible', 'timeDellayBeforeWait', 'timeDellayAfterWait', 'noClearInput']
 runTest:
   - waitForSelector:
      description: Wait selector
-     bindSelector: { selector: input }
+     bindSelector: { selector: selector }
 
   - typeInputRaw:
       description: Type in selector
-      bindSelector: { input: input }
+      bindSelector: { selector: selector }
       bindData: { text: text }

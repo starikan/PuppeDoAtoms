@@ -3,13 +3,13 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 
 // WRITE YOUR LOGIC BELLOW
 instance.atomRun = async function() {
-  const { input } = this.selectors;
+  const { selector } = this.selectors;
   const { text } = this.data;
   const { noClearInput } = this.options;
 
-  const element = await this.getElement(this.page, input);
+  const element = await this.getElement(this.page, selector);
 
-  const logEntry = `Type in selector: '${input}', text: '${text}'`;
+  const logEntry = `Type in selector: '${selector}', text: '${text}'`;
 
   if (!element) {
     await this.log({ text: logEntry, element, level: 'error' });
