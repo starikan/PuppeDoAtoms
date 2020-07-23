@@ -2,4 +2,4 @@ name: clickSelectorRaw
 type: atom
 needSelectors: ['selector']
 needData: ['selectorNumber?']
-allowOptions: ['count', 'delay', 'button', 'logAfter', 'timeDelayAfterClick']
+allowOptions: ['count', 'timeDelayBeforeClick', 'button', 'logAfter', 'timeDelayAfterClick']

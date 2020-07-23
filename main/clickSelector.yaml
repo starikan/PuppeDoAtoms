@@ -3,7 +3,7 @@ name: clickSelector
 descriprion: Wait selector and click
 needSelectors: ['selector']
 needData: ['selectorNumber?']
-allowOptions: ['count', 'delay', 'button', 'logAfter', 'hidden', 'visible', 'timeDelayBeforeWait', 'timeDelayAfterWait', 'timeDelayAfterClick']
+allowOptions: ['count', 'timeDelayBeforeClick', 'button', 'logAfter', 'hidden', 'visible', 'timeDelayBeforeWait', 'timeDelayAfterWait', 'timeDelayAfterClick']
 runTest:
   - waitForSelector:
      description: Wait selector
