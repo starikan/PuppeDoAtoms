@@ -6,6 +6,7 @@ runTest:
   - checkSelector:
       bindSelectors: { selector: selector }
       result: { clickSelectorIfExists_Result: exists }
+
   - clickSelector:
       bindSelectors: { selector: selector }
       if: 'clickSelectorIfExists_Result == true'

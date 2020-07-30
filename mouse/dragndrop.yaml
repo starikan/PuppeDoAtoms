@@ -4,13 +4,16 @@ needSelectors: ['dnd_selector']
 needData: ['dnd_offcetX', 'dnd_offcetY', 'dnd_dX', 'dnd_dY']
 runTest:
   - mouseMoveOnSelector:
-      bS: { selector: dnd_selector }
-      bD:
+      bindSelectors: { selector: dnd_selector }
+      bindData:
         dX: dnd_offcetX
         dY: dnd_offcetY
+
   - mouseDown:
+
   - mouseMove:
-      bD:
+      bindData:
         dX: dnd_dX
         dY: dnd_dY
+
   - mouseUp:

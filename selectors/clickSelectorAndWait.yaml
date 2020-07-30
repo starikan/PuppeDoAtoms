@@ -4,10 +4,12 @@ needSelectors: ['selector', 'selectorWait?']
 needData: ['time?']
 runTest:
   - clickSelector:
-      bS: { selector: selector }
+      bindSelectors: { selector: selector }
+
   - waitForSelector:
-      bS: { selector: selectorWait }
+      bindSelectors: { selector: selectorWait }
       if: 'selector ? true : false'
+
   - waitTime:
-      bD: { time: time }
+      bindData:  { time: time }
       if: 'time ? true : false'

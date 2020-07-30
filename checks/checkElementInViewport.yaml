@@ -5,23 +5,27 @@ allowResults: ['нетуЕго']
 needSelectors: ['parent', 'target']
 runTest:
   - getCoordsElement:
-      bs: { selector: parent }
-      r:
+      bindSelectors: { selector: parent }
+      result:
         xBody: x
         yBody: y
         heightBody: height
         widthBody: width
+
   - logTest:
       d: { logData: true }
+
   - getCoordsElement:
-      bs: { selector: target }
-      r:
+      bindSelectors: { selector: target }
+      result:
         xElement: x
         yElement: y
         heightElement: height
         widthElement: width
+
   - logTest:
       d: { logData: true }
+
   - blank:
       dF:
         elementNotInViewport: 'xBody + heightBody <= xElement || yBody + widthBody <= yElement'
