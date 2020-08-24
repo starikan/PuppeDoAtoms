@@ -1,2 +1,5 @@
 name: todo
 type: atom
+logOptions:
+  textColor: white
+  backgroundColor: red
