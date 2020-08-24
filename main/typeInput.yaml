@@ -6,10 +6,14 @@ needData: ['text']
 allowOptions: ['hidden', 'visible', 'timeDelayBeforeWait', 'timeDelayAfterWait', 'noClearInput']
 runTest:
   - waitForSelector:
-     description: Wait selector
-     bindSelector: { selector: selector }
+      description: Wait selector
+      bindSelector: { selector: selector }
+      logOptions:
+        notShow: true
 
   - typeInputRaw:
       description: Type in selector
       bindSelector: { selector: selector }
       bindData: { text: text }
+      logOptions:
+        notShow: true

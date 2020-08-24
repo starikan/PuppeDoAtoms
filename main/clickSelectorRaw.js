@@ -5,17 +5,23 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 instance.atomRun = async function () {
   const { selector } = this.selectors;
   const { selectorNumber = 0 } = this.data;
-  const { count = 1, timeDelayBeforeClick = 1, button = 'left', logAfter = false, timeDelayAfterClick = 0 } = this.options;
+  const {
+    count = 1,
+    timeDelayBeforeClick = 1,
+    button = 'left',
+    logAfter = false,
+    timeDelayAfterClick = 0,
+  } = this.options;
   const element = ((await this.getElement(this.page, selector, true)) || [])[selectorNumber];
 
   for (let i = 0; i < count; i++) {
     try {
       if (!logAfter) {
-        await this.log({ text: `Click selector: '${selector}'`, element });
+        await this.log({ text: `Click selector: '${selector}'`, element, notShow: false });
       }
       await element.click({ delay: timeDelayBeforeClick, button });
       if (logAfter) {
-        await this.log({ text: `Click selector: '${selector}'`, element });
+        await this.log({ text: `Click selector: '${selector}'`, element, notShow: false });
       }
     } catch (error) {
       await this.log({

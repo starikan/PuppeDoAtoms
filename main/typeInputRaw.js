@@ -2,7 +2,7 @@ const instance = new (require('@puppedo/atoms-core'))();
 module.exports = { runTest: instance.runTest.bind(instance) };
 
 // WRITE YOUR LOGIC BELLOW
-instance.atomRun = async function() {
+instance.atomRun = async function () {
   const { selector } = this.selectors;
   const { text } = this.data;
   const { noClearInput } = this.options;
@@ -25,5 +25,5 @@ instance.atomRun = async function() {
   }
 
   await element.type(String(text));
-  await this.log({ text: logEntry, element });
+  await this.log({ text: logEntry, element, notShow: false });
 };

@@ -3,17 +3,34 @@ name: clickSelector
 descriprion: Wait selector and click
 needSelectors: ['selector']
 needData: ['selectorNumber?']
-allowOptions: ['count', 'timeDelayBeforeClick', 'button', 'logAfter', 'hidden', 'visible', 'timeDelayBeforeWait', 'timeDelayAfterWait', 'timeDelayAfterClick']
+allowOptions:
+  [
+    'count',
+    'timeDelayBeforeClick',
+    'button',
+    'logAfter',
+    'hidden',
+    'visible',
+    'timeDelayBeforeWait',
+    'timeDelayAfterWait',
+    'timeDelayAfterClick',
+  ]
 runTest:
   - waitForSelector:
-     description: Wait selector
-     bindSelector: { selector: selector }
+      description: Wait selector
+      bindSelector: { selector: selector }
+      logOptions:
+        notShow: true
 
   - blank:
       if: 'selectorNumber === null'
       const: { selectorNumber: 0 }
+      logOptions:
+        notShow: true
 
   - clickSelectorRaw:
       description: Click
       bindData: { selectorNumber: selectorNumber }
       bindSelector: { selector: selector }
+      logOptions:
+        notShow: true
