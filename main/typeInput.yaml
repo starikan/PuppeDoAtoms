@@ -9,11 +9,11 @@ runTest:
       description: Wait selector
       bindSelector: { selector: selector }
       logOptions:
-        notShow: true
+        logThis: false
 
   - typeInputRaw:
       description: Type in selector
       bindSelector: { selector: selector }
       bindData: { text: text }
       logOptions:
-        notShow: true
+        logThis: false

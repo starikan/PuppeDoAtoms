@@ -20,17 +20,17 @@ runTest:
       description: Wait selector
       bindSelector: { selector: selector }
       logOptions:
-        notShow: true
+        logThis: false
 
   - blank:
       if: 'selectorNumber === null'
       const: { selectorNumber: 0 }
       logOptions:
-        notShow: true
+        logThis: false
 
   - clickSelectorRaw:
       description: Click
       bindData: { selectorNumber: selectorNumber }
       bindSelector: { selector: selector }
       logOptions:
-        notShow: true
+        logThis: false
