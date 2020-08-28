@@ -17,11 +17,11 @@ instance.atomRun = async function () {
   for (let i = 0; i < count; i++) {
     try {
       if (!logAfter) {
-        await this.log({ text: `Click selector: '${selector}'`, element, notShow: false });
+        await this.log({ text: `Click selector: '${selector}'`, element });
       }
       await element.click({ delay: timeDelayBeforeClick, button });
       if (logAfter) {
-        await this.log({ text: `Click selector: '${selector}'`, element, notShow: false });
+        await this.log({ text: `Click selector: '${selector}'`, element });
       }
     } catch (error) {
       await this.log({

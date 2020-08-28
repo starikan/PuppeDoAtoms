@@ -25,5 +25,5 @@ instance.atomRun = async function () {
   }
 
   await element.type(String(text));
-  await this.log({ text: logEntry, element, notShow: false });
+  await this.log({ text: logEntry, element });
 };
