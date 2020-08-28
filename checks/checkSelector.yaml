@@ -9,7 +9,7 @@ logOptions: { logChildren: false }
 runTest:
   - waitForSelector:
       bindSelectors: { selector: selector }
-      options: { noThrow: true, waitingTime: 0 }
+      options: { noThrow: true, waitingTime: 1 }
 
   - checkSelectorRaw:
       bindSelectors: { selector: selector }
