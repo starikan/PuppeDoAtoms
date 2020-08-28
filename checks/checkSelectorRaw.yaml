@@ -1,0 +1,5 @@
+---
+name: checkSelectorRaw
+type: atom
+needSelectors: ['selector']
+allowResults: ['exists']

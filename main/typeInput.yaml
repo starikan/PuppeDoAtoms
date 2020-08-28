@@ -3,17 +3,15 @@ name: typeInput
 descriprion: Wait selector and type text in input
 needSelectors: ['selector']
 needData: ['text']
-allowOptions: ['hidden', 'visible', 'timeDelayBeforeWait', 'timeDelayAfterWait', 'noClearInput']
+allowOptions: ['hidden', 'visible', 'timeDelayBeforeWait', 'timeDelayAfterWait', 'noClearInput', 'waitingTime']
+logOptions: { logChildren: false }
+
 runTest:
   - waitForSelector:
       description: Wait selector
       bindSelector: { selector: selector }
-      logOptions:
-        logThis: false
 
   - typeInputRaw:
       description: Type in selector
       bindSelector: { selector: selector }
       bindData: { text: text }
-      logOptions:
-        logThis: false

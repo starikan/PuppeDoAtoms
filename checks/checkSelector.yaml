@@ -2,4 +2,15 @@
 name: checkSelector
 type: atom
 needSelectors: ['selector']
+allowOptions: ['waitingTime']
 allowResults: ['exists']
+logOptions: { logChildren: false }
+
+runTest:
+  - waitForSelector:
+      bindSelectors: { selector: selector }
+      options: { noThrow: true, waitingTime: 0 }
+
+  - checkSelectorRaw:
+      bindSelectors: { selector: selector }
+      result: { exists: exists }

@@ -5,23 +5,24 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 instance.atomRun = async function () {
   let { selector } = this.selectors;
 
-  const { hide, visible, timeDelay, timeDelayBeforeWait, timeDelayAfterWait } = this.options;
-
-  // TODO: Backward compatibility, remove in major version > 3
-  if (timeDelay) {
-    await this.page.waitFor(timeDelay);
-  }
+  const { hide, visible, timeDelayBeforeWait, timeDelayAfterWait, waitingTime = 30000, noThrow = false } = this.options;
 
   if (timeDelayBeforeWait) {
     await this.page.waitFor(timeDelayBeforeWait);
   }
 
-  if (selector.startsWith('xpath:')) {
-    const selectorClean = selector.replace(/^xpath:/, '');
-    await this.page.waitForXPath(selectorClean, { visible, hidden: hide });
-  } else {
-    const selectorClean = selector.replace(/^css:/, '');
-    await this.page.waitForSelector(selectorClean, { visible, hidden: hide });
+  try {
+    if (selector.startsWith('xpath:')) {
+      const selectorClean = selector.replace(/^xpath:/, '');
+      await this.page.waitForXPath(selectorClean, { visible, hidden: hide, timeout: waitingTime });
+    } else {
+      const selectorClean = selector.replace(/^css:/, '');
+      await this.page.waitForSelector(selectorClean, { visible, hidden: hide, timeout: waitingTime });
+    }
+  } catch (error) {
+    if (!noThrow) {
+      throw error;
+    }
   }
 
   if (timeDelayAfterWait) {
