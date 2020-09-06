@@ -12,7 +12,7 @@ instance.atomRun = async function () {
     logAfter = false,
     timeDelayAfterClick = 0,
   } = this.options;
-  const element = ((await this.getElement(this.page, selector, true)) || [])[selectorNumber];
+  const element = ((await this.getElement(selector, true)) || [])[selectorNumber];
 
   for (let i = 0; i < count; i++) {
     try {

@@ -6,7 +6,7 @@ instance.atomRun = async function() {
   const { selector } = this.selectors;
   const { dX = 10, dY = 10 } = this.data;
 
-  const element = await this.getElement(this.page, selector);
+  const element = await this.getElement(selector);
   const boxElement = await element.boundingBox();
   const elementX = boxElement.x;
   const elementY = boxElement.y;

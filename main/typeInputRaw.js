@@ -7,7 +7,7 @@ instance.atomRun = async function () {
   const { text } = this.data;
   const { noClearInput } = this.options;
 
-  const element = await this.getElement(this.page, selector);
+  const element = await this.getElement(selector);
 
   const logEntry = `Type in selector: '${selector}', text: '${text}'`;
 

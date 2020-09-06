@@ -4,7 +4,7 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 // WRITE YOUR LOGIC BELLOW
 instance.atomRun = async function() {
   const { selector } = this.selectors;
-  const element = await this.getElement(this.page, selector);
+  const element = await this.getElement(selector);
 
   if (element) {
     const { tagName, innerText, value } = await this.page.evaluate(element => {
@@ -16,7 +16,7 @@ instance.atomRun = async function() {
     // Select fetch data
     if (value && !text && tagName === 'SELECT') {
       const selectorSelect = `${selector} > option[value = "${value}"]`;
-      const elementSelect = await this.getElement(this.page, selectorSelect);
+      const elementSelect = await this.getElement(selectorSelect);
       text = await this.page.evaluate(element => element.label, elementSelect);
     }
 

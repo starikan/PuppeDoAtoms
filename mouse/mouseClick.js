@@ -4,7 +4,7 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 // WRITE YOUR LOGIC BELLOW
 instance.atomRun = async function() {
   const { selector } = this.selectors;
-  const element = await this.getElement(this.page, selector);
+  const element = await this.getElement(selector);
   const { X, Y } = this.data;
 
   const mouse = this.page.mouse;

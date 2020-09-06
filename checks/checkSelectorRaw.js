@@ -4,7 +4,7 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 // WRITE YOUR LOGIC BELLOW
 instance.atomRun = async function() {
   const { selector } = this.selectors;
-  const element = await this.getElement(this.page, selector);
+  const element = await this.getElement(selector);
 
   if (element) {
     await this.log({ text: `Check selector exist: '${selector}'`, element });

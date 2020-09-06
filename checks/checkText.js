@@ -6,7 +6,7 @@ instance.atomRun = async function() {
   const { text } = this.data;
   const { selector } = this.selectors;
 
-  const element = await this.getElement(page, selector);
+  const element = await this.getElement(selector);
   const { innerText } = element;
   const exists = innerText === text;
 

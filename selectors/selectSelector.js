@@ -5,7 +5,7 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 instance.atomRun = async function() {
   const { selector } = this.selectors;
   const { option } = this.data;
-  const element = await this.getElement(this.page, selector);
+  const element = await this.getElement(selector);
 
   await this.page.select(selector, option);
 

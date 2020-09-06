@@ -11,7 +11,7 @@ instance.atomRun = async function() {
   }
 
   await this.log({ text: `Counting selectors: '${selector}'` });
-  const elements = await this.getElement(this.page, selector, true);
+  const elements = await this.getElement(selector, true);
   await this.log({ text: `Selectors '${selector}' found '${elements.length}'` });
 
   return { count: elements.length };

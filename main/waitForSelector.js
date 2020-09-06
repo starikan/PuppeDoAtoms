@@ -3,7 +3,7 @@ module.exports = { runTest: instance.runTest.bind(instance) };
 
 // WRITE YOUR LOGIC BELLOW
 instance.atomRun = async function () {
-  let { selector } = this.selectors;
+  const { selector } = this.selectors;
 
   const { hide, visible, timeDelayBeforeWait, timeDelayAfterWait, waitingTime = 30000, noThrow = false } = this.options;
 
@@ -12,12 +12,20 @@ instance.atomRun = async function () {
   }
 
   try {
-    if (selector.startsWith('xpath:')) {
-      const selectorClean = selector.replace(/^xpath:/, '');
-      await this.page.waitForXPath(selectorClean, { visible, hidden: hide, timeout: waitingTime });
+    if (this.getEngine('puppeteer')) {
+      if (selector.startsWith('xpath:')) {
+        const selectorClean = selector.replace(/^xpath:/, '');
+        await this.page.waitForXPath(selectorClean, { visible, hidden: hide, timeout: waitingTime });
+      } else {
+        const selectorClean = selector.replace(/^css:/, '');
+        await this.page.waitForSelector(selectorClean, { visible, hidden: hide, timeout: waitingTime });
+      }
+    } else if (this.getEngine('playwright')) {
+      const selectorClean = selector.replace(/^css:/, '').replace(/^xpath:/, '');
+      const state = visible ? 'visible' : hide ? 'hidden' : 'visible';
+      await this.page.waitForSelector(selectorClean, { state, timeout: waitingTime });
     } else {
-      const selectorClean = selector.replace(/^css:/, '');
-      await this.page.waitForSelector(selectorClean, { visible, hidden: hide, timeout: waitingTime });
+      throw new Error(`There is unknown engine: ${engine}`);
     }
   } catch (error) {
     if (!noThrow) {
@@ -26,7 +34,13 @@ instance.atomRun = async function () {
   }
 
   if (timeDelayAfterWait) {
-    await this.page.waitFor(timeDelayAfterWait);
+    if (this.getEngine('puppeteer')) {
+      await this.page.waitFor(timeDelayAfterWait);
+    } else if (this.getEngine('playwright')) {
+      await this.page.waitForTimeout(timeDelayAfterWait);
+    } else {
+      throw new Error(`There is unknown engine: ${engine}`);
+    }
   }
 
   await this.log({ text: `Wait for selector: '${selector}'` });
