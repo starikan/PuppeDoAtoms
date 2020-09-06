@@ -1,5 +1,6 @@
 ---
 name: getText
 type: atom
+needData: ['selectorNumber?']
 needSelectors: ['selector']
 allowResults: ['text']

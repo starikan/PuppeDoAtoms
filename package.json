@@ -1,6 +1,6 @@
 {
   "name": "@puppedo/atoms",
-  "version": "4.0.1",
+  "version": "4.0.3",
   "description": "Atoms for PuppeDo",
   "main": "index.js",
   "repository": {
@@ -27,6 +27,6 @@
     "prepublishOnly": "npm install"
   },
   "dependencies": {
-    "@puppedo/atoms-core": "2.0.2"
+    "@puppedo/atoms-core": "2.1.0"
   }
 }
