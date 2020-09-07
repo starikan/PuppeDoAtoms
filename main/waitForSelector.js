@@ -25,7 +25,7 @@ instance.atomRun = async function () {
       const state = visible ? 'visible' : hide ? 'hidden' : 'visible';
       await this.page.waitForSelector(selectorClean, { state, timeout: waitingTime });
     } else {
-      throw new Error(`There is unknown engine: ${engine}`);
+      throw new Error(`There is unknown engine ${this.getEngine()}`);
     }
   } catch (error) {
     if (!noThrow) {
@@ -39,7 +39,7 @@ instance.atomRun = async function () {
     } else if (this.getEngine('playwright')) {
       await this.page.waitForTimeout(timeDelayAfterWait);
     } else {
-      throw new Error(`There is unknown engine: ${engine}`);
+      throw new Error(`There is unknown engine ${this.getEngine()}`);
     }
   }
 

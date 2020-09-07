@@ -35,7 +35,13 @@ instance.atomRun = async function () {
     }
 
     if (timeDelayAfterClick) {
-      await this.page.waitFor(timeDelayAfterClick);
+      if (this.getEngine('puppeteer')) {
+        await this.page.waitFor(timeDelayAfterClick);
+      } else if (this.getEngine('playwright')) {
+        await this.page.waitForTimeout(timeDelayAfterClick);
+      } else {
+        throw new Error(`There is unknown engine ${this.getEngine()}`);
+      }
     }
   }
 };
