@@ -1,0 +1,44 @@
+name: parseTable
+type: atom
+needData: ['columns']
+needSelector: ['maskSelector']
+allowResult: ['json']
+
+runTest:
+  - blank:
+      description: Variables declaration
+      const:
+        json: 'new Array()'
+        $i: 1
+
+  - countSelectors:
+      description: Count selectors amount
+      bindSelector: { selector: maskSelector }
+      result: { selCount: count }
+
+  - blank:
+      allowResult: ['json', '$i']
+      bindData: { json: json }
+      repeat: selCount
+      result: { json: json }
+      runTest:
+        - blank:
+            description: Vaues
+            const:
+              $field: 0
+              $entry: "new Object()"
+              json: json
+
+        - getText:
+            description:
+            bindSelector: { selector: "`${maskSelector}[${$i}]` + columns[$field]['selector']"}
+            repeat: columns.length
+            result:
+              $field: $field + 1
+              $entry: "Object.assign({}, $entry, {[columns[$field]['key']]: text})"
+
+        - blank:
+            description: Update variables
+            const:
+              $i: $i + 1
+              json: "json.concat($entry)"
