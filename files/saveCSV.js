@@ -1,8 +1,4 @@
-const instance = new (require('@puppedo/atoms-core'))();
-module.exports = { runTest: instance.runTest.bind(instance) };
-
-// WRITE YOUR LOGIC BELLOW
-instance.atomRun = async function() {
+module.exports = async function atomRun() {
   const { csvData, headers, filename, folder } = this.data;
 
   const csvText = csvData.map(v => v.join(',')).join('\n');

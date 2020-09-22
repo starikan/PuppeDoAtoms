@@ -1,7 +1,5 @@
 const path = require('path');
 
-const Atom = require('@puppedo/atoms-core');
-
 const ATOMS_PATHS = [
   './main',
   './checks',
@@ -23,5 +21,3 @@ for (let path of resolvedPaths) {
     process.env.PPD_ROOT_ADDITIONAL += ',' + path;
   }
 }
-
-module.exports = { Atom };

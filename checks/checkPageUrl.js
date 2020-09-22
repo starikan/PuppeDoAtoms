@@ -1,8 +1,4 @@
-const instance = new (require('@puppedo/atoms-core'))();
-module.exports = { runTest: instance.runTest.bind(instance) };
-
-// WRITE YOUR LOGIC BELLOW
-instance.atomRun = async function() {
+module.exports = async function atomRun() {
   const { url } = this.data;
   const allPages = await this.browser.pages();
   const exist = allPages.map(page => page.url().includes(url)).some(v => v);

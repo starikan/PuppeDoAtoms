@@ -1,8 +1,4 @@
-const instance = new (require('@puppedo/atoms-core'))();
-module.exports = { runTest: instance.runTest.bind(instance) };
-
-// WRITE YOUR LOGIC BELLOW
-instance.atomRun = async function() {
+module.exports = async function atomRun() {
   const { width, height, deviceScaleFactor, isMobile, hasTouch, isLandscape } = await this.page.viewport();
 
   await this.log({ text: `Getting window attributes width='${width}', height='${height}'` });

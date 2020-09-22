@@ -1,8 +1,4 @@
-const instance = new (require('@puppedo/atoms-core'))();
-module.exports = { runTest: instance.runTest.bind(instance) };
-
-// WRITE YOUR LOGIC BELLOW
-instance.atomRun = async function() {
+module.exports = async function atomRun() {
   const { name } = this.data;
   this.envs.set('current.page', name);
   await this.log({ text: `Switch on page: '${name}'` });

@@ -1,8 +1,4 @@
-const instance = new (require('@puppedo/atoms-core'))();
-module.exports = { runTest: instance.runTest.bind(instance) };
-
-// WRITE YOUR LOGIC BELLOW
-instance.atomRun = async function () {
+module.exports = async function atomRun() {
   const { selector } = this.selectors;
 
   const { hide, visible, timeDelayBeforeWait, timeDelayAfterWait, waitingTime = 30000, noThrow = false } = this.options;
