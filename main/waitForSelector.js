@@ -4,7 +4,7 @@ module.exports = async function atomRun() {
   const { hide, visible, timeDelayBeforeWait, timeDelayAfterWait, waitingTime = 30000, noThrow = false } = this.options;
 
   if (timeDelayBeforeWait) {
-    await this.page.waitFor(timeDelayBeforeWait);
+    await this.page.waitForTimeout(timeDelayBeforeWait);
   }
 
   try {
@@ -30,13 +30,7 @@ module.exports = async function atomRun() {
   }
 
   if (timeDelayAfterWait) {
-    if (this.getEngine('puppeteer')) {
-      await this.page.waitFor(timeDelayAfterWait);
-    } else if (this.getEngine('playwright')) {
-      await this.page.waitForTimeout(timeDelayAfterWait);
-    } else {
-      throw new Error(`There is unknown engine ${this.getEngine()}`);
-    }
+    await this.page.waitForTimeout(timeDelayAfterWait);
   }
 
   await this.log({ text: `Wait for selector: '${selector}'` });

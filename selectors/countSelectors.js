@@ -5,7 +5,7 @@ module.exports = async function atomRun() {
   let elements = [];
 
   if (timeDelay) {
-    await this.page.waitFor(timeDelay);
+    await this.page.waitForTimeout(timeDelay);
   }
 
   await this.log({ text: `Counting selectors: '${selector}'` });
