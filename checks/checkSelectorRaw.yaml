@@ -2,4 +2,5 @@
 name: checkSelectorRaw
 type: atom
 needSelectors: ['selector']
+needData: ['selectorNumber?']
 allowResults: ['exists']
