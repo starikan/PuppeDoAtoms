@@ -258,7 +258,9 @@
 
 module.exports = async function atomRun() {
   const { count = 1 } = this.options;
-  const { key = false, modificator = false, modificator1 = false, modificator2 = false } = this.data;
+  const { key, modificator = false, modificator1 = false, modificator2 = false } = this.data;
+
+  const keyArray = !Array.isArray(key) ? [key] : key;
 
   if (modificator) {
     await this.page.keyboard.down(modificator);
@@ -271,7 +273,9 @@ module.exports = async function atomRun() {
   }
 
   for (let i = 0; i < count; i++) {
-    await this.page.keyboard.press(key);
+    for (let keyIndex = 0; keyIndex < keyArray.length; keyIndex++) {
+      await this.page.keyboard.press(keyArray[keyIndex]);
+    }
   }
 
   if (modificator) {
