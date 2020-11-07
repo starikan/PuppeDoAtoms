@@ -12,9 +12,7 @@ module.exports = async function atomRun() {
       },
       { element, attribute },
     );
-  }
-
-  if (this.getEngine('puppeteer')) {
+  } else if (this.getEngine('puppeteer')) {
     attributeValue = await this.page.evaluate(
       (element, attribute) => {
         return element.getAttribute(attribute);
@@ -22,7 +20,10 @@ module.exports = async function atomRun() {
       element,
       attribute,
     );
+  } else {
+    throw new Error(`There is unknown engine ${this.getEngine()}`);
   }
+
   await this.log({
     text: `Get attribute: '${attribute}' from selector: '${selector}' with result: '${attributeValue}'`,
     element,
