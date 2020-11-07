@@ -3,13 +3,26 @@ module.exports = async function atomRun() {
   const { attribute } = this.data;
   const element = await this.getElement(selector);
 
-  const attributeValue = await this.page.evaluate(
-    ({ element, attribute }) => {
-      return element.getAttribute(attribute);
-    },
-    { element, attribute },
-  );
+  let attributeValue;
 
+  if (this.getEngine('playwright')) {
+    attributeValue = await this.page.evaluate(
+      ({ element, attribute }) => {
+        return element.getAttribute(attribute);
+      },
+      { element, attribute },
+    );
+  }
+
+  if (this.getEngine('puppeteer')) {
+    attributeValue = await this.page.evaluate(
+      (element, attribute) => {
+        return element.getAttribute(attribute);
+      },
+      element,
+      attribute,
+    );
+  }
   await this.log({
     text: `Get attribute: '${attribute}' from selector: '${selector}' with result: '${attributeValue}'`,
     element,
