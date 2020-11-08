@@ -1,12 +1,16 @@
 {
   "name": "@puppedo/atoms",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "Atoms for PuppeDo",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/starikan/PuppeDoAtoms.git"
   },
+  "files": [
+    "src",
+    "index.js"
+  ],
   "keywords": [
     "puppeteer",
     "playwright",
@@ -24,5 +28,10 @@
   "homepage": "https://github.com/starikan/PuppeDoAtoms#readme",
   "scripts": {
     "test": "echo \"No test specified\""
+  },
+  "devDependencies": {
+    "@puppedo/core": "2.0.0-beta.65",
+    "playwright": "1.5.2",
+    "puppeteer": "5.4.1"
   }
 }

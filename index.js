@@ -1,15 +1,15 @@
 const path = require('path');
 
 const ATOMS_PATHS = [
-  './main',
-  './checks',
-  './modify',
-  './files',
-  './blank',
-  './mouse',
-  './checks',
-  './cdp',
-  './selectors',
+  './src/main',
+  './src/checks',
+  './src/modify',
+  './src/files',
+  './src/blank',
+  './src/mouse',
+  './src/checks',
+  './src/cdp',
+  './src/selectors',
 ];
 
 const resolvedPaths = ATOMS_PATHS.map(v => path.resolve(__dirname, v));
