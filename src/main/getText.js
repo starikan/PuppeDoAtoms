@@ -26,6 +26,7 @@ module.exports = async function atomRun() {
 
     await this.log({ text: `Get text: '${text}' from selector: '${selector}'`, element });
 
+    await element.dispose();
     return { text };
   } else {
     throw { message: `Can't find selector: '${selector}' by index ${selectorNumber || 0}` };

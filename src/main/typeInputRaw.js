@@ -22,4 +22,6 @@ module.exports = async function atomRun() {
 
   await element.type(String(text));
   await this.log({ text: logEntry, element });
+
+  await element.dispose();
 };

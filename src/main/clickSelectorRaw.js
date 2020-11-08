@@ -33,5 +33,7 @@ module.exports = async function atomRun() {
     if (timeDelayAfterClick) {
       await this.page.waitForTimeout(timeDelayAfterClick);
     }
+
+    await element.dispose();
   }
 };

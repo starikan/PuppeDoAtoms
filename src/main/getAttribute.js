@@ -29,5 +29,7 @@ module.exports = async function atomRun() {
     element,
   });
 
+  await element.dispose();
+
   return { attributeValue };
 };

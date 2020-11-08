@@ -11,6 +11,7 @@ module.exports = async function atomRun() {
       element,
       key,
     );
+    await element.dispose();
     return { value };
   } catch (error) {
     await this.log({
