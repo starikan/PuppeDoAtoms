@@ -1,0 +1,11 @@
+---
+name: playwright
+type: env
+description: Playwright Env
+browser:
+  type: browser
+  engine: playwright
+  browserName: chromium
+  runtime: run
+  args:
+  - "--window-size=1024,918"

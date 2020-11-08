@@ -1,0 +1,11 @@
+---
+name: puppeteer
+type: env
+description: Puppeteer Env
+browser:
+  type: browser
+  engine: puppeteer
+  browserName: chrome
+  runtime: run
+  args:
+  - "--window-size=1024,918"
