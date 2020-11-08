@@ -1,52 +1,39 @@
 module.exports = async function atomRun() {
   const fs = require('fs');
 
-  const { urlregexp, filename } = this.data;
+  const { urlRegExp, fileName } = this.data;
+  const outputFolderContext = this.data.outputFolderContext || false;
+  const { folderLatestFull } = this.logOptions.output;
 
-  await this.page.setRequestInterception(true);
-  this.page.on('request', async interceptedRequest => {
-    if (interceptedRequest.url().match(urlregexp)) {
-      const fileContent = fs.readFileSync(filename);
+  const fileFullPath = outputFolderContext ? path.join(folderLatestFull, fileName) : fileName;
+
+  if (this.getEngine('puppeteer')) {
+    await this.page.setRequestInterception(true);
+    this.page.on('request', (interceptedRequest) => {
+      if (interceptedRequest.url().match(urlRegExp)) {
+        const fileContent = fs.readFileSync(fileFullPath);
+        const res = {
+          headers: interceptedRequest.headers(),
+          body: fileContent,
+        };
+        interceptedRequest.respond(res);
+      } else {
+        interceptedRequest.continue();
+      }
+    });
+  } else if (this.getEngine('playwright')) {
+    await this.page.route(new RegExp(urlRegExp), (route) => {
+      const request = route.request();
+      const fileContent = fs.readFileSync(fileFullPath);
       const res = {
-        headers: interceptedRequest.headers(),
-        body: fileContent,
+        headers: request.headers(),
+        body: fileContent.toString(),
       };
-      interceptedRequest.respond(res);
-    } else {
-      interceptedRequest.continue();
-    }
-  });
+      route.fulfill(res);
+    });
+  } else {
+    throw new Error(`There is unknown engine ${this.getEngine()}`);
+  }
 
-  await this.log({ text: `Request '${urlregexp}' replace with file '${filename}'` });
+  await this.log({ text: `Request '${urlRegExp}' replace with file '${fileName}'` });
 };
-
-// module.exports = {
-//   runTest: async function(args) {
-//     const fs = require('fs');
-//     const { page, data, log, levelIndent, _ } = args;
-
-//     const urlregexp = _.get(data, 'urlregexp');
-//     const filename = _.get(data, 'filename');
-
-//     await page.setRequestInterception(true);
-//     page.on('request', async interceptedRequest => {
-//       if (interceptedRequest.url().match(urlregexp)) {
-//         const fileContent = fs.readFileSync(filename);
-//         const res = {
-//           headers: interceptedRequest.headers(),
-//           body: fileContent,
-//         };
-//         interceptedRequest.respond(res);
-//       } else {
-//         interceptedRequest.continue();
-//       }
-//     });
-
-//     await log({
-//       text: `Запрос ${urlregexp} заменен файлом ${filename}`,
-//       screenshot: false,
-//       level: 'raw',
-//       levelIndent: levelIndent + 1,
-//     });
-//   },
-// };
