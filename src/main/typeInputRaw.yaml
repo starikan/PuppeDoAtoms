@@ -1,5 +1,6 @@
 name: typeInputRaw
 type: atom
+bindDescription: "`Type text: '${text}' in input: '${selector}'`"
 needSelectors: ['selector']
 needData: ['text']
 allowOptions: ['noClearInput']

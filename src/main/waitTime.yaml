@@ -1,3 +1,4 @@
 name: waitTime
 type: atom
+bindDescription: "`Wait time: '${time}'`"
 needData: ['time']

@@ -1,6 +1,6 @@
----
 name: getAttribute
 type: atom
+bindDescription: "`Get attribute: '${attribute}' from: '${selector}'`"
 needSelectors: ['selector']
 needData: ['attribute']
 allowResults: ['attributeValue']

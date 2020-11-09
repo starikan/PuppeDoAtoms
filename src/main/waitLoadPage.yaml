@@ -1,3 +1,4 @@
 name: waitLoadPage
 type: atom
+description: Wait for load page
 allowOptions: ['waitUntil']

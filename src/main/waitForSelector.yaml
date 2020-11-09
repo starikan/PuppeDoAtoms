@@ -1,4 +1,5 @@
 name: waitForSelector
 type: atom
+bindDescription: "`Wait for: '${selector}'`"
 needSelectors: ['selector']
 allowOptions: ['hidden', 'visible', 'timeDelayBeforeWait', 'timeDelayAfterWait', 'waitingTime', 'noThrow']

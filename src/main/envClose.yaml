@@ -1,2 +1,4 @@
 name: envClose
 type: atom
+bindDescription: "`Close environment: '${envName}'`"
+needData: ['envName']

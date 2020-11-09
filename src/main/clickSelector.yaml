@@ -1,6 +1,5 @@
-type: atom
 name: clickSelector
-descriprion: Wait selector and click
+bindDescriprion: "`Wait selector: '${selector}' and click`"
 needSelectors: ['selector']
 needData: ['selectorNumber?']
 allowOptions:

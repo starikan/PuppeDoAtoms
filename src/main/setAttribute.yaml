@@ -1,5 +1,5 @@
 name: setAttribute
 type: atom
-bindDescription: '`Set attribute ${attribute} on ${selector} to ${value}`'
+bindDescription: '`Set attribute: ${attribute} on: ${selector} to: ${value}`'
 needData: ['attribute', 'value']
 needSelectors: ['selector']

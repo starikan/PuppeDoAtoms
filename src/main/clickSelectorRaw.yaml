@@ -1,5 +1,6 @@
 name: clickSelectorRaw
 type: atom
+bindDescriprion: "`Click selector: '${selector}'`"
 needSelectors: ['selector']
 needData: ['selectorNumber?']
 allowOptions: ['count', 'timeDelayBeforeClick', 'button', 'logAfter', 'timeDelayAfterClick']

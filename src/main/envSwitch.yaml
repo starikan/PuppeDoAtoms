@@ -1,3 +1,4 @@
 name: envSwitch
 type: atom
+bindDescription: "`Switch on environment: '${envName}'`"
 needData: ['envName']

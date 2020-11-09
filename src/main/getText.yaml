@@ -1,6 +1,6 @@
----
 name: getText
 type: atom
+bindDescription: "`Get text from selector: '${selector}'`"
 needData: ['selectorNumber?']
 needSelectors: ['selector']
 allowResults: ['text']

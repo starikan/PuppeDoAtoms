@@ -1,6 +1,6 @@
 name: getElementObjectValue
 type: atom
-description: Get value from element in browser context
+bindDescription: "`Get value: '${key}' from selector: '${selector}' in browser context`"
 needSelectors: ['selector']
 needData: ['key']
 allowResults: ['value']

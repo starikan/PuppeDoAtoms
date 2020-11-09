@@ -1,6 +1,5 @@
-type: atom
 name: typeInput
-descriprion: Wait selector and type text in input
+bindDescription: "`Wait selector: '${selector}' and type text: '${text}' in input`"
 needSelectors: ['selector']
 needData: ['text']
 allowOptions: ['hidden', 'visible', 'timeDelayBeforeWait', 'timeDelayAfterWait', 'noClearInput', 'waitingTime']
