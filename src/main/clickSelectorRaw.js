@@ -34,6 +34,6 @@ module.exports = async function atomRun() {
       await this.page.waitForTimeout(timeDelayAfterClick);
     }
 
-    await element.dispose();
   }
+  await element.dispose();
 };
