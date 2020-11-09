@@ -1,42 +1,21 @@
 module.exports = async function atomRun() {
-  const { csvData, headers, filename, folder } = this.data;
-
-  const csvText = csvData.map(v => v.join(',')).join('\n');
-  const headersText = header ? headers.map(v => v.join(',')).join('\n') : null;
   const fs = require('fs');
   const path = require('path');
+
+  const { folderFull, folderLatestFull } = this.logOptions.output;
+  const { csvData, fileName } = this.data;
+  const headers = this.data.headers || [];
+  const folder = this.data.folder || folderLatestFull;
+
+  const csvText = csvData.map((v) => v.join(',')).join('\n');
 
   if (!fs.existsSync(folder)) {
     fs.mkdirSync(folder);
   }
-  fs.writeFileSync(path.join(folder, filename), headersText + '\n' + csvText);
+  fs.writeFileSync(path.join(folder, fileName), headers.join(',') + '\n' + csvText);
+  if (!this.data.folder) {
+    fs.copyFileSync(path.join(folder, fileName), path.join(folderFull, filePath));
+  }
 
-  await this.log({ text: `Write CSV: ${filename}` });
+  await this.log({ text: `Write CSV: ${fileName}` });
 };
-
-// module.exports = {
-//   runTest: async function(args) {
-//     const { data, log, levelIndent, _ } = args;
-
-//     const csvData = _.get(data, 'data');
-//     const headers = _.get(data, 'headers');
-//     const filename = _.get(data, 'filename');
-//     const folder = _.get(data, 'folder');
-
-//     const csvText = csvData.map(v => v.join(',')).join('\n');
-//     const fs = require('fs');
-//     const path = require('path');
-
-//     if (!fs.existsSync(folder)) {
-//       fs.mkdirSync(folder);
-//     }
-//     fs.writeFileSync(path.join(folder, filename), headers + '\n' + csvText);
-
-//     await log({
-//       text: `Записан CSV файл: ${filename}`,
-//       screenshot: false,
-//       level: 'raw',
-//       levelIndent: levelIndent + 1,
-//     });
-//   },
-// };

@@ -1,3 +1,4 @@
 name: saveCSV
 type: atom
-needData: ['data', 'headers?', 'filename', 'folder']
+bindDescription: "`Save data to csv file: '${fileName}'`"
+needData: ['csvData', 'headers?', 'fileName', 'folder?']
