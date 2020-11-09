@@ -1,4 +1,3 @@
 name: mouseClick
 type: atom
-needSelectors: ['selector']
 needData: ['X', 'Y']
