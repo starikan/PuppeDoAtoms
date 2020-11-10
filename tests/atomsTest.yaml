@@ -2,7 +2,8 @@ name: atomsTest
 description: Test all Atoms
 
 data:
-  envs: ['playwright', 'puppeteer']
+  envs: ['playwright']
+#   envs: ['puppeteer', 'playwright']
 
 selectors:
   nested:
@@ -15,7 +16,7 @@ selectors:
 repeat: envs.length
 runTest:
   - initData:
-      const: { currEnv: 'envs[repeat - 1]' }
+      const: { currEnv: 'envs[envs.length - $loop]' }
 
   - envSwitch:
       description: '[ENV_SWITCH] First of all you need chose environment.'
@@ -54,8 +55,8 @@ runTest:
 
         - case:
             description: '[CLICK_SELECTOR]'
-            todo: Puppeteer click NB!
-            if: "currEnv !== 'mainEnv_puppeteer'"
+            todo: puppeteer click NB!
+            if: "currEnv !== 'puppeteer'"
             runTest:
               - clickSelector:
                   description: Simple Click on link
