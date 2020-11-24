@@ -8,14 +8,15 @@ module.exports = async function atomRun() {
   const folder = this.data.folder || folderLatestFull;
 
   const csvText = csvData.map((v) => v.join(',')).join('\n');
+  const fileNameResolve = fileName.replace(/[^\w\d\.]/gi, '_');
 
   if (!fs.existsSync(folder)) {
     fs.mkdirSync(folder);
   }
-  fs.writeFileSync(path.join(folder, fileName), headers.join(',') + '\n' + csvText);
+  fs.writeFileSync(path.join(folder, fileNameResolve), headers.join(',') + '\n' + csvText);
   if (!this.data.folder) {
-    fs.copyFileSync(path.join(folder, fileName), path.join(folderFull, filePath));
+    fs.copyFileSync(path.join(folder, fileNameResolve), path.join(folderFull, filePath));
   }
 
-  await this.log({ text: `Write CSV: ${fileName}` });
+  await this.log({ text: `Write CSV: ${fileNameResolve}` });
 };

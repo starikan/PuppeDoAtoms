@@ -2,3 +2,5 @@ name: goTo
 type: atom
 bindDescription: "`Go to url: '${url}'`"
 needData: ['url']
+allowOptions: ['allowError']
+allowResults: ['success']
