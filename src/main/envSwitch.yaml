@@ -2,3 +2,7 @@ name: envSwitch
 type: atom
 bindDescription: "`Switch on environment: '${envName}'`"
 needData: ['envName']
+inlineJS: >
+  const { envName } = this.data;
+  await this.log({ text: `Environment switch on '${envName}'` });
+  await this.envs.setEnv(envName);

@@ -2,3 +2,7 @@ name: envClose
 type: atom
 bindDescription: "`Close environment: '${envName}'`"
 needData: ['envName']
+inlineJS: >
+  const { envName } = this.data;
+  await this.envs.closeEnv(envName);
+  await this.log({ text: `Environment '${envName}' close.` });
