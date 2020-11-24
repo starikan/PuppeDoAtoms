@@ -2,7 +2,6 @@ name: clickSelectorNative
 bindDescriprion: "`Wait selector: '${selector}' and click`"
 needSelectors: ['selector']
 needData: ['selectorNumber?']
-engineSupports: ['puppeteer']
 allowOptions:
   - 'count'
   - 'timeDelayBeforeClick'
@@ -51,14 +50,30 @@ runTest:
           if (!logAfter) {
             await this.log({ text: `Click selector: '${selector}'`, element });
           }
-          await this.page.evaluate(
-            ({ element, count }) => {
-              for (let i = 0; i < count; i++) {
-                element.click();
-              }
-            },
-            { element, count },
-          );
+
+          if (this.getEngine('playwright')) {
+            await this.page.evaluate(
+              ({ element, count }) => {
+                for (let i = 0; i < count; i++) {
+                  element.click();
+                }
+              },
+              { element, count },
+            );
+          } else if (this.getEngine('puppeteer')) {
+            await this.page.evaluate(
+              (element, attribute) => {
+                for (let i = 0; i < count; i++) {
+                  element.click();
+                }
+              },
+              element,
+              attribute,
+            );
+          } else {
+            throw new Error(`There is unknown engine ${this.getEngine()}`);
+          }
+
           if (logAfter) {
             await this.log({ text: `Click selector: '${selector}'`, element });
           }
