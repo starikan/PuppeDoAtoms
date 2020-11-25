@@ -62,13 +62,13 @@ runTest:
             );
           } else if (this.getEngine('puppeteer')) {
             await this.page.evaluate(
-              (element, attribute) => {
+              (element, count) => {
                 for (let i = 0; i < count; i++) {
                   element.click();
                 }
               },
               element,
-              attribute,
+              count,
             );
           } else {
             throw new Error(`There is unknown engine ${this.getEngine()}`);
