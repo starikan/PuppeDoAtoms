@@ -1,4 +1,4 @@
-name: typeInputNative
+name: pasteInput
 bindDescription: "`Wait selector: '${selector}' and type text: '${text}' in input`"
 needSelectors: ['selector']
 needData: ['text']
@@ -11,12 +11,12 @@ runTest:
       bindSelector: { selector: selector }
 
   - blank:
-      description: Input some text in field INPUT
-      bS: { selector: mainInput }
-      data: { text: myDataBinded }
-      needSelector: ['selector']
+      description: Paste some text in field INPUT
+      needSelectors: ['selector']
       needData: ['text']
       allowOptions: ['noClearInput']
+      bindSelector: { selector: selector }
+      bindData: { text: text }
       inlineJS: >
         const { selector } = this.selectors;
         const { text } = this.data;
@@ -35,11 +35,10 @@ runTest:
           await this.page.evaluate(
             ({ element, text, noClearInput }) => {
                 if (noClearInput) {
-                  element.value = element.value + String(text);
+                  text = element.value + String(text);
                 }
-                else {
-                  element.value = String(text);
-                }
+                element.value = String(text);
+                element.dispatchEvent(new Event('change'));
             },
             { element, text, noClearInput },
           );
@@ -47,11 +46,10 @@ runTest:
           await this.page.evaluate(
             (element, text, noClearInput) => {
                 if (noClearInput) {
-                  element.value = element.value + String(text);
+                  text = element.value + String(text);
                 }
-                else {
-                  element.value = String(text);
-                }
+                element.value = String(text);
+                element.dispatchEvent(new Event('change'));
             },
             element, text, noClearInput
           );
