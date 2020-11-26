@@ -1,0 +1,6 @@
+name: pasteInputRaw
+type: atom
+description: Paste some text in field INPUT
+needSelectors: ['selector']
+needData: ['text']
+allowOptions: ['noClearInput']
