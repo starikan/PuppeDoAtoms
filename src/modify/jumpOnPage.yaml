@@ -1,3 +1,7 @@
 name: jumpOnPage
 type: atom
 needData: ['name']
+inlineJS: >
+  const { name } = this.data;
+  this.envs.set('current.page', name);
+  await this.log({ text: `Switch on page: '${name}'` });
