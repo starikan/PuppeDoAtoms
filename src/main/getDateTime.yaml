@@ -1,0 +1,5 @@
+name: getDateTime
+type: atom
+description: Getting datetime with format
+needData: [format?, inputDate?, yearShift?, monthShift?, dateShift?, hoursShift?, minutesShift?, secondsShift?]
+allowResults: ['datetime']
