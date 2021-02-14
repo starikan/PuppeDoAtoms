@@ -1,0 +1,9 @@
+name: runBrowser
+type: atom
+bindDescription: "`Run environment: '${envName ? envName : ''}${env ? JSON.stringify(env) : ''}'`"
+needData: ['envName?', 'env?']
+runTest:
+  - envSwitch:
+      bindData:
+        envName: envName
+        env: env
