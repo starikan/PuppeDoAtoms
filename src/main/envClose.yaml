@@ -4,5 +4,12 @@ bindDescription: "`Close environment: '${envName}'`"
 needData: ['envName']
 inlineJS: >
   const { envName } = this.data;
-  await this.envs.closeEnv(envName);
-  await this.log({ text: `Environment '${envName}' close.` });
+  if (envName) {
+    await this.envs.closeEnv(envName);
+    await this.log({ text: `Environment '${envName}' closed.` });
+  }
+  else {
+    await this.envs.closeAllEnvs();
+    await this.log({ text: `All Environments closed.` });
+  }
+
