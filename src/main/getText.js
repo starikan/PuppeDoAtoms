@@ -1,11 +1,8 @@
 module.exports = async function atomRun() {
   const { selector } = this.selectors;
-  const { selectorNumber } = this.data;
+  const { selectorNumber, getAll } = this.data;
 
-  const elements = await this.getElement(selector, true);
-  const element = elements[selectorNumber || 0];
-
-  if (element) {
+  const extractElementText = async (element) => {
     const { tagName, innerText, value } = await this.page.evaluate((element) => {
       return { tagName: element.tagName, innerText: element.innerText, value: element.value };
     }, element);
@@ -26,9 +23,34 @@ module.exports = async function atomRun() {
 
     await this.log({ text: `Get text: '${text}' from selector: '${selector}'`, element });
 
-    await element.dispose();
-    return { text };
-  } else {
-    throw { message: `Can't find selector: '${selector}' by index ${selectorNumber || 0}` };
+    return text;
+  };
+
+  const elements = await this.getElement(selector, true);
+
+  if (!elements || !elements.length) {
+    throw { message: `Can't find any selector: '${selector}'` };
   }
+
+  if (![null, undefined].includes(selectorNumber)) {
+    const element = elements[selectorNumber || 0];
+    if (element) {
+      const text = await extractElementText(element);
+      await Promise.all(elements.map(async (elem) => await elem.dispose()));
+      return { text, array: [text] };
+    } else {
+      throw { message: `Can't find selector: '${selector}' by index ${selectorNumber || 0}` };
+    }
+  }
+
+  if (getAll) {
+    const array = [];
+    for (let element of elements) {
+      array.push(await extractElementText(element));
+    }
+    await Promise.all(elements.map(async (elem) => await elem.dispose()));
+    return { text: null, array };
+  }
+
+  throw { message: 'Use "selectorNumber" or "getAll" flags in data of getText Atom' };
 };
