@@ -32,17 +32,6 @@ module.exports = async function atomRun() {
     throw { message: `Can't find any selector: '${selector}'` };
   }
 
-  if (![null, undefined].includes(selectorNumber)) {
-    const element = elements[selectorNumber || 0];
-    if (element) {
-      const text = await extractElementText(element);
-      await Promise.all(elements.map(async (elem) => await elem.dispose()));
-      return { text, array: [text] };
-    } else {
-      throw { message: `Can't find selector: '${selector}' by index ${selectorNumber || 0}` };
-    }
-  }
-
   if (getAll) {
     const array = [];
     for (let element of elements) {
@@ -52,5 +41,12 @@ module.exports = async function atomRun() {
     return { text: null, array };
   }
 
-  throw { message: 'Use "selectorNumber" or "getAll" flags in data of getText Atom' };
+  const element = elements[selectorNumber || 0];
+  if (element) {
+    const text = await extractElementText(element);
+    await Promise.all(elements.map(async (elem) => await elem.dispose()));
+    return { text, array: [text] };
+  } else {
+    throw { message: `Can't find selector: '${selector}' by index ${selectorNumber || 0}` };
+  }
 };
