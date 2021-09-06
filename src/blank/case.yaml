@@ -2,6 +2,7 @@
 ---
 name: case
 type: atom
+continueOnError: true
 logOptions:
   textColor: black
   backgroundColor: white
