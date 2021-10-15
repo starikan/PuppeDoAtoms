@@ -1,0 +1,14 @@
+name: waitTimeReal
+type: atom
+bindDescription: "`Stop all process on time: '${time}'`"
+needData: ['time']
+inlineJS: >
+  function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  };
+  const time = this.data.time;
+  await this.log({ text: `Stop all process on time: '${time}' start.` });
+  await sleep(time);
+  await this.log({ text: `Stop all process on time: '${time}' end.` });
