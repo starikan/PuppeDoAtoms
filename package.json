@@ -30,8 +30,8 @@
     "test": "echo \"No test specified\""
   },
   "devDependencies": {
-    "@puppedo/core": "2.0.0-beta.72",
-    "playwright": "1.6.2",
-    "puppeteer": "5.5.0"
+    "@puppedo/core": "2.0.0-beta.87",
+    "playwright": "1.15.2",
+    "puppeteer": "10.4.0"
   }
 }
