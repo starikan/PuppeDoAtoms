@@ -5,7 +5,7 @@ needData: ['envName']
 allowResults: ['running', 'available']
 inlineJS: >
   const envName = this.data.envName;
-  const running = !!this.envs[envName];
+  const running = !!this.envs.envs[envName];
   const available = this.allData && this.allData.envs.map(v => v.name).includes(envName);
 
   await this.log({ text: `Environment check: '${envName}'. Running: ${running}. Available: ${available}` });
