@@ -13,11 +13,9 @@ module.exports = async function atomRun() {
   }
 
   if (!noClearInput) {
-    await element.focus();
-    await this.page.keyboard.down('Control');
-    await this.page.keyboard.press('A');
-    await this.page.keyboard.up('Control');
-    await this.page.keyboard.press('Backspace');
+    await element.evaluate((element) => {
+      element.value = '';
+    }, element);
   }
 
   await element.type(String(text));
