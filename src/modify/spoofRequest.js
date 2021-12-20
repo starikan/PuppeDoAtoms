@@ -1,5 +1,6 @@
 module.exports = async function atomRun() {
   const fs = require('fs');
+  const path = require('path');
 
   const { urlRegExp, fileName } = this.data;
   const outputFolderContext = this.data.outputFolderContext || false;
