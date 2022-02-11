@@ -1,0 +1,4 @@
+name: mouseScroll
+type: atom
+needData: ['deltaLeftRight?', 'deltaUpDown?']
+needSelectors: ['selector']
