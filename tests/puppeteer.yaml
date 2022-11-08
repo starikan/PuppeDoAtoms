@@ -1,7 +1,7 @@
 ---
 name: puppeteer
-type: env
-description: Puppeteer Env
+type: runner
+description: Puppeteer Runner
 browser:
   type: browser
   engine: puppeteer

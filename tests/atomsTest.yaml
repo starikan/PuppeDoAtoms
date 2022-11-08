@@ -19,7 +19,7 @@ runTest:
       const: { currentRunner: 'runners[runners.length - $loop]' }
 
   - runnerSwitch:
-      description: '[ENV_SWITCH] First of all you need chose environment.'
+      description: '[RUNNER_SWITCH] First of all you need chose runner.'
       bindData: { runnerName: currentRunner }
 
   - case:
@@ -56,7 +56,7 @@ runTest:
         - case:
             description: '[CLICK_SELECTOR]'
             todo: puppeteer click NB!
-            if: "currEnv !== 'puppeteer'"
+            if: "currentRunner !== 'puppeteer'"
             runTest:
               - clickSelector:
                   description: Simple Click on link

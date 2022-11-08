@@ -1,7 +1,7 @@
 ---
 name: playwright
-type: env
-description: Playwright Env
+type: runner
+description: Playwright Runner
 browser:
   type: browser
   engine: playwright
