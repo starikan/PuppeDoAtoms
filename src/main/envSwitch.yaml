@@ -1,9 +1,0 @@
-name: envSwitch
-type: atom
-bindDescription: "`Switch on environment: '${envName}'`"
-needData: ['envName?', 'env?']
-inlineJS: >
-  const envName = this.data.envName;
-  const env = this.data.env;
-  await this.log({ text: `Environment switch on '${env ? env : envName}'` });
-  await this.envs.setEnv({ name: envName, env });

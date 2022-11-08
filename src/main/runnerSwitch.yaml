@@ -1,0 +1,9 @@
+name: runnerSwitch
+type: atom
+bindDescription: "`Switch on runner: '${runnerName}'`"
+needData: ['runnerName?', 'runner?']
+inlineJS: >
+  const runnerName = this.data.runnerName;
+  const runner = this.data.runner;
+  await this.log({ text: `Runner switch on '${runner ? runner : runnerName}'` });
+  await this.allRunners.switchRunner({ name: runnerName, runner });

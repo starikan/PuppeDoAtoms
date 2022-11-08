@@ -1,0 +1,14 @@
+name: runnerClose
+type: atom
+bindDescription: "`Close runner: '${runnerName}'`"
+needData: ["runnerName?"]
+inlineJS: >
+  const { runnerName } = this.data;
+  if (runnerName) {
+    await this.allRunners.closeRunner(runnerName);
+    await this.log({ text: `Runner '${runnerName}' closed.` });
+  }
+  else {
+    await this.allRunners.closeAllRunners();
+    await this.log({ text: `All Runners closed.` });
+  }

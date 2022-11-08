@@ -2,8 +2,8 @@ name: atomsTest
 description: Test all Atoms
 
 data:
-  envs: ['playwright']
-#   envs: ['puppeteer', 'playwright']
+  runners: ['playwright']
+#   runners: ['puppeteer', 'playwright']
 
 selectors:
   nested:
@@ -13,14 +13,14 @@ selectors:
   mainLinkChild: '#child-link'
   mainButton: '#main-button'
 
-repeat: envs.length
+repeat: runners.length
 runTest:
   - initData:
-      const: { currEnv: 'envs[envs.length - $loop]' }
+      const: { currentRunner: 'runners[runners.length - $loop]' }
 
-  - envSwitch:
+  - runnerSwitch:
       description: '[ENV_SWITCH] First of all you need chose environment.'
-      bindData: { envName: currEnv }
+      bindData: { runnerName: currentRunner }
 
   - case:
       description: Blank Atoms
@@ -93,6 +93,6 @@ runTest:
   - todo:
       description: Selectors Atoms
 
-  - envClose:
-      description: '[ENV_CLOSE] Close environment'
-      bindData: { envName: currEnv }
+  - runnerClose:
+      description: '[RUNNER_CLOSE] Close runner'
+      bindData: { runnerName: currentRunner }
