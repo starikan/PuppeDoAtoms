@@ -1,14 +1,14 @@
 name: runnerCheck
 type: atom
-bindDescription: "`Check environment: '${envName}'`"
-needData: ['envName']
+bindDescription: "`Check environment: '${runnerName}'`"
+needData: ['runnerName']
 allowResults: ['running', 'available']
 inlineJS: >
-  const envName = this.data.envName;
-  const running = !!this.allRunners.getRunnerByName(envName);
-  const available = this.allData && this.allData.envs.map(v => v.name).includes(envName);
+  const runnerName = this.data.runnerName;
+  const running = !!this.allRunners.getRunnerByName(runnerName);
+  const available = this.allData && this.allData.envs.map(v => v.name).includes(runnerName);
 
-  await this.log({ text: `Environment check: '${envName}'. Running: ${running}. Available: ${available}` });
+  await this.log({ text: `Environment check: '${runnerName}'. Running: ${running}. Available: ${available}` });
 
   return { running, available }
 
