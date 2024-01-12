@@ -4,7 +4,7 @@ module.exports = async function atomRun() {
 
   const { urlRegExp, fileName } = this.data;
   const outputFolderContext = this.data.outputFolderContext || false;
-  const { folderLatestFull } = this.logOptions.output;
+  const { folderLatestFull } = this.environment.getOutput(this.envsId);
 
   const fileFullPath = outputFolderContext ? path.join(folderLatestFull, fileName) : fileName;
 

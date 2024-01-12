@@ -3,9 +3,9 @@ module.exports = async function atomRun() {
   const path = require('path');
 
   const { object, fileName, folder } = this.data;
-  const { folderFull, folderLatestFull } = this.logOptions.output || {};
+  const { folderFull, folderLatestFull } = this.environment.getOutput(this.envsId) || {};
 
-  const json = JSON.stringify(object, null, 2)
+  const json = JSON.stringify(object, null, 2);
 
   if (folder) {
     if (!fs.existsSync(folder)) {

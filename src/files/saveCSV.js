@@ -2,7 +2,7 @@ module.exports = async function atomRun() {
   const fs = require('fs');
   const path = require('path');
 
-  const { folderFull, folderLatestFull } = this.logOptions.output;
+  const { folderFull, folderLatestFull } = this.environment.getOutput(this.envsId);
   const { csvData, fileName } = this.data;
   const headers = this.data.headers || [];
   const folder = this.data.folder || folderLatestFull;
