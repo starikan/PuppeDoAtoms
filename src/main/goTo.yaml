@@ -1,6 +1,6 @@
 name: goTo
 type: atom
 bindDescription: "`Go to url: '${url}'`"
-needData: ['url']
+needData: ['url', 'timeout?']
 allowOptions: ['allowError']
 allowResults: ['success']
