@@ -1,9 +1,10 @@
 module.exports = async function atomRun() {
-  const { url, timeout = 30000 } = this.data;
+  const { url } = this.data;
+  const timeout = this.data.timeout !== null ? this.data.timeout : 30000;
   const allowError = this.options.allowError;
 
   try {
-    await this.page.goto(url, {timeout});
+    await this.page.goto(url, { timeout });
     await this.log({ text: `Go to: ${url}` });
   } catch (error) {
     if (allowError) {
